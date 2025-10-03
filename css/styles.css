@@ -136,6 +136,16 @@ body {
 
 .container {
   width: 90%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: none;
+}
+
+
+.container-gallery {
+  width: 90%;
   max-width: 90vw;
   display: flex;
   flex-direction: column;
