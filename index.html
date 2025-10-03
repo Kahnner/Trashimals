@@ -42,9 +42,9 @@
     <h1>Welcome to <span style="white-space:nowrap">Trashimals ♡</span></h1>
     <p>We’re a community of furries and friends based in Oklahoma City, Oklahoma. Founded in September 2023, we host meetups, park days, game nights, and creative events—centered on kindness, inclusion, and a <strong>safe space for everyone</strong>.</p>
     <div class="cta">
-      <a class="btn primary" href="rules.html">Read Our Rules</a>
-      <a class="btn" href="gallery.html">Peek the Photo Gallery</a>
-      <a class="btn" href="merch.html">Grab Some Merch</a>
+      <a class="btn primary" href="rules">Read Our Rules!</a>
+      <a class="btn" href="gallery">Peek the Photo Gallery!</a>
+      <a class="btn" href="merch">Grab Some Merch!</a>
     </div>
   </div>
 </section>
@@ -67,140 +67,143 @@
 </section>
 
 <!-- Integrated Socials (kept wording intact) -->
-    <div style="font-family: 'Trebuchet MS', Arial, sans-serif; text-align:center; margin-bottom:30px;">
-  <h2 style="font-size:36px; font-weight:900; color:white; text-shadow: 2px 2px 6px rgba(0,0,0,0.35); margin:0;">
-    ✨ Our Socials! ✨
-  </h2>
+<div style="display:inline-block; background-color:#ffe4e9; border-radius:20px; padding:30px 20px; text-align:center;">
+
+  <div style="font-family: 'Trebuchet MS', Arial, sans-serif; text-align:center; margin-bottom:30px;">
+    <h2 style="font-size:36px; font-weight:900; color:black; text-shadow: 2px 2px 6px rgba(0,0,0,0.15); margin:0;">
+      ✨ Our Socials! ✨
+    </h2>
+  </div>
+
+  <style>
+    /* Social buttons */
+    .social-btn {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width: 250px;
+      gap:14px;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-weight:bold;
+      text-decoration:none;
+      padding:18px 28px;
+      border-radius:14px;
+      color:white;
+      font-size:18px;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.35), 0 10px 15px rgba(0,0,0,0.25), 0 0 15px rgba(255,255,255,0.05);
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-btn::before {
+      content:'';
+      position:absolute;
+      top:-50%; left:-50%;
+      width:200%; height:200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(45deg) scale(0);
+      transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+      pointer-events: none;
+    }
+
+    .social-btn:hover::before {
+      transform: rotate(45deg) scale(1);
+      opacity:0.6;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 12px 0 rgba(0,0,0,0.3), 0 18px 25px rgba(0,0,0,0.35), 0 0 25px rgba(255,255,255,0.15);
+      filter: brightness(1.2);
+      animation: rainbowGlow 1.5s infinite alternate;
+    }
+
+    /* Logo sizing */
+    .social-btn svg {
+      flex-shrink:0;
+      width:36px;
+      height:36px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .social-btn:hover svg {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    /* Rainbow neon hover pulse */
+    @keyframes rainbowGlow {
+      0% { box-shadow: 0 6px 0 rgba(255,0,0,0.6), 0 10px 15px rgba(255,0,0,0.4), 0 0 15px rgba(255,0,0,0.3); }
+      20% { box-shadow: 0 6px 0 rgba(255,127,0,0.6), 0 10px 15px rgba(255,127,0,0.4), 0 0 15px rgba(255,127,0,0.3); }
+      40% { box-shadow: 0 6px 0 rgba(255,255,0,0.6), 0 10px 15px rgba(255,255,0,0.4), 0 0 15px rgba(255,255,0,0.3); }
+      60% { box-shadow: 0 6px 0 rgba(0,255,0,0.6), 0 10px 15px rgba(0,255,0,0.4), 0 0 15px rgba(0,255,0,0.3); }
+      80% { box-shadow: 0 6px 0 rgba(0,0,255,0.6), 0 10px 15px rgba(0,0,255,0.4), 0 0 15px rgba(0,0,255,0.3); }
+      100% { box-shadow: 0 6px 0 rgba(139,0,255,0.6), 0 10px 15px rgba(139,0,255,0.4), 0 0 15px rgba(139,0,255,0.3); }
+    }
+
+    .socials{
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 340px;
+      margin:0 auto;
+    }
+  </style>
+
+  <div class="socials">
+
+    <!-- Telegram -->
+    <a href="https://t.me/trashimals" target="_blank" class="social-btn" style="background-color:#0088cc;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 240 240">
+        <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm58 85l-19.8 93.7c-1.5 6.6-5.5 8.2-11 5.1l-30.4-22.4-14.7 14.2c-1.6 1.6-3 3-6.1 3l2.2-31.8 57.9-52.2c2.5-2.2-0.6-3.5-3.9-1.3l-71.6 45.1-30.8-9.6c-6.7-2.1-6.8-6.7 1.4-9.9l120.6-46.5c5.5-2 10.3 1.3 8.6 9.6z"/>
+      </svg>
+      Telegram
+    </a>
+
+    <!-- Bluesky -->
+    <a href="https://bsky.app/profile/trashimalsokc.bsky.social" target="_blank" class="social-btn" style="background-color:#6f2dbd;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
+        <g transform="translate(1.4066 1.4066) scale(2.81 2.81)">
+          <path d="M 45 90 L 45 90 C 20.147 90 0 69.853 0 45 v 0 C 0 20.147 20.147 0 45 0 h 0 c 24.853 0 45 20.147 45 45 v 0 C 90 69.853 69.853 90 45 90 z" fill="rgb(59,160,254)"/>
+          <path d="M 29.977 25.793 C 36.058 30.358 42.599 39.615 45 44.582 c 2.402 -4.967 8.942 -14.224 15.023 -18.789 c 4.388 -3.294 11.497 -5.843 11.497 2.267 c 0 1.62 -0.929 13.607 -1.473 15.553 c -1.893 6.766 -8.792 8.491 -14.929 7.447 c 10.727 1.826 13.456 7.873 7.562 13.92 c -11.192 11.485 -16.087 -2.882 -17.341 -6.563 c -0.23 -0.675 -0.337 -0.991 -0.339 -0.722 c -0.002 -0.268 -0.109 0.047 -0.339 0.722 c -1.254 3.681 -6.148 18.048 -17.341 6.563 c -5.893 -6.047 -3.165 -12.095 7.562 -13.92 c -6.137 1.044 -13.036 -0.681 -14.929 -7.447 c -0.545 -1.946 -1.473 -13.933 -1.473 -15.553 C 18.48 19.95 25.589 22.499 29.977 25.793 L 29.977 25.793 z" fill="white"/>
+        </g>
+      </svg>
+      Bluesky
+    </a>
+
+    <!-- X -->
+    <a href="https://x.com/TrashimalsOkc" target="_blank" class="social-btn" style="background-color:#000000;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+        <path d="M18.244 2H21.5l-7.5 8.571L22 22h-6.273l-4.9-6.571L5.8 22H2.5l8-9.143L2 2h6.273l4.455 6.222L18.244 2zM17 20h1.693L7.2 4H5.385L17 20z"/>
+      </svg>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/trashimalsokc/" target="_blank" class="social-btn"
+       style="background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
+      <svg fill="#000000" width="36" height="36" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.445 5h-8.891A6.559 6.559 0 0 0 5 11.554v8.891A6.559 6.559 0 0 0 11.554 27h8.891a6.56 6.56 0 0 0 6.554-6.555v-8.891A6.557 6.557 0 0 0 20.445 5zm4.342 15.445a4.343 4.343 0 0 1-4.342 4.342h-8.891a4.341 4.341 0 0 1-4.341-4.342v-8.891a4.34 4.34 0 0 1 4.341-4.341h8.891a4.342 4.342 0 0 1 4.341 4.341l.001 8.891z"/>
+        <path d="M16 10.312c-3.138 0-5.688 2.551-5.688 5.688s2.551 5.688 5.688 5.688 5.688-2.551 5.688-5.688-2.55-5.688-5.688-5.688zm0 9.163a3.475 3.475 0 1 1-.001-6.95 3.475 3.475 0 0 1 .001 6.95zM21.7 8.991a1.363 1.363 0 1 1-1.364 1.364c0-.752.51-1.364 1.364-1.364z"/>
+      </svg>
+      Instagram
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/profile.php?id=61556909815715&mibextid=ZbWKwL" target="_blank" class="social-btn" style="background-color:#1877F2;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
+        <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/>
+        <path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"/>
+      </svg>
+      Facebook
+    </a>
+
+  </div>
 </div>
 
-<style>
-  /* Social buttons */
-  .social-btn {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width: 250px;
-    gap:14px;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
-    font-weight:bold;
-    text-decoration:none;
-    padding:18px 28px;
-    border-radius:14px;
-    color:white;
-    font-size:18px;
-    box-shadow: 0 6px 0 rgba(0,0,0,0.35), 0 10px 15px rgba(0,0,0,0.25), 0 0 15px rgba(255,255,255,0.05);
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .social-btn::before {
-    content:'';
-    position:absolute;
-    top:-50%; left:-50%;
-    width:200%; height:200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-    transform: rotate(45deg) scale(0);
-    transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
-    pointer-events: none;
-  }
-
-  .social-btn:hover::before {
-    transform: rotate(45deg) scale(1);
-    opacity:0.6;
-  }
-
-  .social-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 12px 0 rgba(0,0,0,0.3), 0 18px 25px rgba(0,0,0,0.35), 0 0 25px rgba(255,255,255,0.15);
-    filter: brightness(1.2);
-    animation: rainbowGlow 1.5s infinite alternate;
-  }
-
-  /* Logo sizing */
-  .social-btn svg {
-    flex-shrink:0;
-    width:36px;
-    height:36px;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .social-btn:hover svg {
-    transform: scale(1.2) rotate(10deg);
-  }
-
-  /* Rainbow neon hover pulse */
-  @keyframes rainbowGlow {
-    0% { box-shadow: 0 6px 0 rgba(255,0,0,0.6), 0 10px 15px rgba(255,0,0,0.4), 0 0 15px rgba(255,0,0,0.3); }
-    20% { box-shadow: 0 6px 0 rgba(255,127,0,0.6), 0 10px 15px rgba(255,127,0,0.4), 0 0 15px rgba(255,127,0,0.3); }
-    40% { box-shadow: 0 6px 0 rgba(255,255,0,0.6), 0 10px 15px rgba(255,255,0,0.4), 0 0 15px rgba(255,255,0,0.3); }
-    60% { box-shadow: 0 6px 0 rgba(0,255,0,0.6), 0 10px 15px rgba(0,255,0,0.4), 0 0 15px rgba(0,255,0,0.3); }
-    80% { box-shadow: 0 6px 0 rgba(0,0,255,0.6), 0 10px 15px rgba(0,0,255,0.4), 0 0 15px rgba(0,0,255,0.3); }
-    100% { box-shadow: 0 6px 0 rgba(139,0,255,0.6), 0 10px 15px rgba(139,0,255,0.4), 0 0 15px rgba(139,0,255,0.3); }
-  }
-
-  .socials{
-    position: relative;
-    align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 340px;
-    margin:0 auto;
-  }
-</style>
-
-<div class="socials">
-
-  <!-- Telegram -->
-  <a href="https://t.me/trashimals" target="_blank" class="social-btn" style="background-color:#0088cc;">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 240 240">
-      <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm58 85l-19.8 93.7c-1.5 6.6-5.5 8.2-11 5.1l-30.4-22.4-14.7 14.2c-1.6 1.6-3 3-6.1 3l2.2-31.8 57.9-52.2c2.5-2.2-0.6-3.5-3.9-1.3l-71.6 45.1-30.8-9.6c-6.7-2.1-6.8-6.7 1.4-9.9l120.6-46.5c5.5-2 10.3 1.3 8.6 9.6z"/>
-    </svg>
-    Telegram
-  </a>
-
-  <!-- Bluesky -->
-  <a href="https://bsky.app/profile/trashimalsokc.bsky.social" target="_blank" class="social-btn" style="background-color:#6f2dbd;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
-      <g transform="translate(1.4066 1.4066) scale(2.81 2.81)">
-        <path d="M 45 90 L 45 90 C 20.147 90 0 69.853 0 45 v 0 C 0 20.147 20.147 0 45 0 h 0 c 24.853 0 45 20.147 45 45 v 0 C 90 69.853 69.853 90 45 90 z" fill="rgb(59,160,254)"/>
-        <path d="M 29.977 25.793 C 36.058 30.358 42.599 39.615 45 44.582 c 2.402 -4.967 8.942 -14.224 15.023 -18.789 c 4.388 -3.294 11.497 -5.843 11.497 2.267 c 0 1.62 -0.929 13.607 -1.473 15.553 c -1.893 6.766 -8.792 8.491 -14.929 7.447 c 10.727 1.826 13.456 7.873 7.562 13.92 c -11.192 11.485 -16.087 -2.882 -17.341 -6.563 c -0.23 -0.675 -0.337 -0.991 -0.339 -0.722 c -0.002 -0.268 -0.109 0.047 -0.339 0.722 c -1.254 3.681 -6.148 18.048 -17.341 6.563 c -5.893 -6.047 -3.165 -12.095 7.562 -13.92 c -6.137 1.044 -13.036 -0.681 -14.929 -7.447 c -0.545 -1.946 -1.473 -13.933 -1.473 -15.553 C 18.48 19.95 25.589 22.499 29.977 25.793 L 29.977 25.793 z" fill="white"/>
-      </g>
-    </svg>
-    Bluesky
-  </a>
-
-  <!-- X -->
-  <a href="https://x.com/TrashimalsOkc" target="_blank" class="social-btn" style="background-color:#000000;">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
-      <path d="M18.244 2H21.5l-7.5 8.571L22 22h-6.273l-4.9-6.571L5.8 22H2.5l8-9.143L2 2h6.273l4.455 6.222L18.244 2zM17 20h1.693L7.2 4H5.385L17 20z"/>
-    </svg>
-  </a>
-
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/trashimalsokc/" target="_blank" class="social-btn"
-     style="background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
-    <svg fill="#000000" width="36" height="36" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20.445 5h-8.891A6.559 6.559 0 0 0 5 11.554v8.891A6.559 6.559 0 0 0 11.554 27h8.891a6.56 6.56 0 0 0 6.554-6.555v-8.891A6.557 6.557 0 0 0 20.445 5zm4.342 15.445a4.343 4.343 0 0 1-4.342 4.342h-8.891a4.341 4.341 0 0 1-4.341-4.342v-8.891a4.34 4.34 0 0 1 4.341-4.341h8.891a4.342 4.342 0 0 1 4.341 4.341l.001 8.891z"/>
-      <path d="M16 10.312c-3.138 0-5.688 2.551-5.688 5.688s2.551 5.688 5.688 5.688 5.688-2.551 5.688-5.688-2.55-5.688-5.688-5.688zm0 9.163a3.475 3.475 0 1 1-.001-6.95 3.475 3.475 0 0 1 .001 6.95zM21.7 8.991a1.363 1.363 0 1 1-1.364 1.364c0-.752.51-1.364 1.364-1.364z"/>
-    </svg>
-    Instagram
-  </a>
-
-  <!-- Facebook -->
-  <a href="https://www.facebook.com/profile.php?id=61556909815715&mibextid=ZbWKwL" target="_blank" class="social-btn" style="background-color:#1877F2;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
-      <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/>
-      <path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"/>
-    </svg>
-    Facebook
-  </a>
-
-</div>
 
 </div>
 </main>
