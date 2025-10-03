@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trashimals • Meet Our Staff</title>
+  <meta name="description" content="Trashimals is a friendly Oklahoma City furry group. Est. Sept 2023. Safe, welcoming, and full of fun events.">
+  <link rel="icon" href="assets/trashimals-logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav" id="nav">
+    <div class="brand">
+      <img src="assets/trashimals-logo.png" alt="Trashimals logo">
+      <div>
+        <div class="title">Trashimals</div>
+        <div class="badge">Oklahoma City • Est. Sep 2023</div>
+      </div>
+    </div>
+    <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="">Home</a></li>
+        <li><a href="rules.html" class="">Rules</a></li>
+        <li><a href="gallery.html" class="">Photo Gallery</a></li>
+        <li><a href="staff.html" class="active">Meet Our Staff</a></li>
+        <li><a href="merch.html" class="">Merch</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="ribbon"></div>
+</header>
+<main>
+<div class="container">
+
+<section class="section">
+  <h2>Meet Our Staff</h2>
+  <p>The folks helping events run smoothly. Say hi at meetups!</p>
+  <div class="grid cols-3">
+    <div class="card staff-card">
+      <img src="assets/trashimals-logo.png" alt="Staff avatar">
+      <div>
+        <div><strong>Riley</strong></div>
+        <div class="role">Organizer &amp; Host</div>
+        <small>Logistics, venues, schedules.</small>
+      </div>
+    </div>
+    <div class="card staff-card">
+      <img src="assets/trashimals-logo.png" alt="Staff avatar">
+      <div>
+        <div><strong>Jay</strong></div>
+        <div class="role">Safety Lead</div>
+        <small>Consent &amp; conduct guidance.</small>
+      </div>
+    </div>
+    <div class="card staff-card">
+      <img src="assets/trashimals-logo.png" alt="Staff avatar">
+      <div>
+        <div><strong>Kit</strong></div>
+        <div class="role">Creative Coordinator</div>
+        <small>Art jams &amp; community projects.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</main>
+<footer>
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="assets/trashimals-logo.png" alt="Trashimals" width="36" height="36" style="border-radius:50%">
+      <small>© 2023–present Trashimals • Oklahoma City, OK • Safe space for everyone.</small>
+    </div>
+    <small>Colors celebrate Pride. Be kind, be you.</small>
+  </div>
+</footer>
+<script>
+document.addEventListener('click', (e)=>{ 
+  const nav = document.getElementById('nav');
+  if(nav.classList.contains('open') && e.target.tagName==='A'){ nav.classList.remove('open'); }
+});
+</script>
+</body>
+</html>
