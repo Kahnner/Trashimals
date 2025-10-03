@@ -143,6 +143,14 @@ body {
   background: none;
 }
 
+.container-merch {
+  width: 90%;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: none;
+}
 
 .container-gallery {
   width: 90%;
