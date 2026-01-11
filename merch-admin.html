@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trashimals • Merch (Staff)</title>
+  <meta name="description" content="Staff-only merch access for Trashimals.">
+  <link rel="icon" href="assets/trashimals-logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    /* Make iframe responsive */
+    .merch-iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 150%; /* taller content */
+      margin-top: 16px;
+    }
+
+    .merch-iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Staff banner */
+    .staff-only-banner {
+      margin: 18px auto 0;
+      max-width: 980px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+  </style>
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container nav" id="nav">
+    <div class="brand">
+      <img src="assets/trashimals-logo.png" alt="Trashimals logo">
+      <div>
+        <div class="title">Trashimals</div>
+        <div class="badge">Oklahoma City • Est. Sep 2023</div>
+      </div>
+    </div>
+
+    <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="index" class="">Home</a></li>
+        <li><a href="rules" class="">Rules</a></li>
+        <li><a href="gallery" class="">Photo Gallery</a></li>
+        <li><a href="staff" class="">Meet Our Staff</a></li>
+        <li><a href="merch" class="">Merch</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="ribbon"></div>
+</header>
+
+<main>
+  <div class="container container-merch">
+
+    <div class="staff-only-banner">
+      <strong>Staff-only page:</strong> This page will be protected with a login.
+      If you can see this right now, it’s because we haven’t turned the lock on yet.
+    </div>
+
+    <section class="section">
+      <h2>Trashimals Merch (Staff Access)</h2>
+      <p>This is the behind-the-scenes merch access page.</p>
+
+      <!-- Embedded Printify Shop -->
+      <div class="merch-iframe-container">
+        <iframe src="https://trashimals-merch.printify.me" title="Trashimals Merch Shop"></iframe>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <strong>Reminder:</strong> Do not share staff-only links publicly.
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="assets/trashimals-logo.png" alt="Trashimals" width="36" height="36" style="border-radius:50%">
+      <small>© 2023–present Trashimals • Oklahoma City, OK • Safe space for everyone.</small>
+    </div>
+    <small>Colors celebrate Pride. Be kind, be you.</small>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('click', (e)=>{ 
+  const nav = document.getElementById('nav');
+  if(nav.classList.contains('open') && e.target.tagName==='A'){ nav.classList.remove('open'); }
+});
+</script>
+</body>
+</html>
