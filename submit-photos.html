@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trashimals • Submit Photos</title>
+  <meta name="description" content="Submit your photos from Trashimals meetups so staff can review, edit, and feature them on our website and socials.">
+  <link rel="icon" href="assets/trashimals-logo.png">
+  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+<header class="site-header">
+  <div class="container nav" id="nav">
+    <div class="brand">
+      <img src="assets/trashimals-logo.png" alt="Trashimals logo">
+      <div>
+        <div class="title">Trashimals</div>
+        <div class="badge">Oklahoma City • Est. Sep 2023</div>
+      </div>
+    </div>
+
+    <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="index">Home</a></li>
+        <li><a href="rules">Rules</a></li>
+        <li><a href="gallery">Photo Gallery</a></li>
+        <li><a href="staff">Meet Our Staff</a></li>
+        <li><a href="merch">Merch</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="ribbon"></div>
+</header>
+
+<main>
+  <div class="container container-gallery">
+    <section class="section">
+      <h2>Submit Your Photos 💖</h2>
+      <p style="opacity:.9;max-width:820px">
+        Got photos from a Trashimals meetup? We’d love to see them!
+        Use our upload form to share your pics with staff so we can review them, optionally edit them, and feature community memories in our gallery and socials.
+      </p>
+
+      <div class="card" style="margin-top:14px">
+        <h3 style="margin-top:0">Before you upload</h3>
+        <ul style="margin:0; padding-left:1.2rem; line-height:1.6">
+          <li><strong>Consent matters:</strong> Please only submit photos if everyone pictured is okay with them being shared with Trashimals.</li>
+          <li><strong>Not all photos will be posted:</strong> Submissions are reviewed for safety, consent, and quality.</li>
+          <li><strong>Free edits:</strong> If you request edits, our Photographer <strong>Kahnner</strong> will gladly edit them for free.</li>
+          <li><strong>Credit is optional:</strong> You can choose whether you’d like to be credited if your photo is featured.</li>
+        </ul>
+      </div>
+
+      <div class="notice" style="margin-top:14px">
+        <strong>Heads up:</strong> Because this form includes file uploads, Google requires you to open it on their page (it can’t be embedded directly here).
+        It will open in a new tab.
+      </div>
+
+      <div class="cta" style="margin-top:16px">
+        <a class="btn primary"
+           href="https://forms.gle/ypG9omf2j4qutaPM9"
+           target="_blank"
+           rel="noopener noreferrer">
+          Open Photo Upload Form ✨
+        </a>
+
+        <a class="btn" href="gallery">
+          Back to Gallery
+        </a>
+      </div>
+
+      <p style="opacity:.75;margin-top:14px;max-width:820px">
+        After you submit: you can close the form tab and come back here any time.
+        If staff has questions about your submission, we’ll reach out using the email you provide.
+      </p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:10px">
+      <img src="assets/trashimals-logo.png" alt="Trashimals" width="36" height="36" style="border-radius:50%">
+      <small>© 2023–present Trashimals • Oklahoma City, OK • Safe space for everyone.</small>
+    </div>
+    <small>Colors celebrate Pride. Be kind, be you.</small>
+  </div>
+</footer>
+
+<script>
+  // Close mobile nav on link click
+  document.addEventListener('click', (e)=> {
+    const nav = document.getElementById('nav');
+    if (nav.classList.contains('open') && e.target.tagName === 'A') {
+      nav.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
