@@ -316,3 +316,171 @@ p {
   margin-top: 4px;
   font-weight: bold;
 }
+/* =========================================================
+   GALLERY v2 (namespaced so it won't break other pages)
+   Put this at the VERY BOTTOM of css/styles.css
+   ========================================================= */
+
+/* Use ONLY on gallery page to avoid affecting other pages */
+.container-gallery .gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+/* Override the old ".gallery img" rules safely */
+.container-gallery .gallery-item{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+.container-gallery .gallery-item img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+  border-radius:14px;
+  box-shadow:none; /* prevent double shadow */
+  transition:filter .18s ease, transform .18s ease;
+}
+
+/* Hover overlay with buttons */
+.container-gallery .gallery-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity .18s ease;
+  background:rgba(0,0,0,.35);
+}
+
+/* Show overlay on hover / keyboard focus */
+.container-gallery .gallery-item:hover .gallery-overlay,
+.container-gallery .gallery-item:focus-within .gallery-overlay{
+  opacity:1;
+}
+
+/* Dim image on hover */
+.container-gallery .gallery-item:hover img,
+.container-gallery .gallery-item:focus-within img{
+  filter:grayscale(35%) brightness(.85);
+  transform:scale(1.02);
+}
+
+/* Icon buttons */
+.container-gallery .gallery-btn{
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.28);
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.container-gallery .gallery-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.20);
+  border-color:rgba(255,255,255,.38);
+}
+
+.container-gallery .gallery-btn svg{
+  width:22px;
+  height:22px;
+  fill:#fff;
+}
+
+/* ---------------------------
+   LIGHTBOX (fullscreen modal)
+   --------------------------- */
+
+.container-gallery .lightbox{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+}
+
+.container-gallery .lightbox.open{
+  display:grid;
+  place-items:center;
+}
+
+.container-gallery .lightbox-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.65);
+}
+
+.container-gallery .lightbox-panel{
+  position:relative;
+  width:min(980px,92vw);
+  max-height:86vh;
+  background:rgba(20,20,24,.78);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 18px 60px rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+
+.container-gallery .lightbox-img{
+  display:block;
+  width:100%;
+  max-height:70vh;
+  object-fit:contain;
+  border-radius:14px;
+  background:rgba(0,0,0,.20);
+}
+
+/* Close button (X) */
+.container-gallery .lightbox-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.14);
+  color:#fff;
+  cursor:pointer;
+  font-size:18px;
+  line-height:1;
+  display:grid;
+  place-items:center;
+}
+
+.container-gallery .lightbox-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:10px;
+}
+
+.container-gallery .lightbox-download{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* Mobile tweak */
+@media (max-width:520px){
+  .container-gallery .gallery-item img{height:180px;}
+}
