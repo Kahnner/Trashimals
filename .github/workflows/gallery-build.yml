@@ -1,0 +1,42 @@
+name: Build Gallery JSON
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-gallery:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate gallery.json
+        run: |
+          mkdir -p assets
+          echo "[" > assets/gallery.json
+
+          first=true
+          for file in assets/gallery/*.{jpg,jpeg,png,webp,gif,JPG,JPEG,PNG,WEBP,GIF}; do
+            if [ -f "$file" ]; then
+              if [ "$first" = false ]; then
+                echo "," >> assets/gallery.json
+              fi
+              first=false
+              filename=$(basename "$file")
+              echo "  \"assets/gallery/$filename\"" >> assets/gallery.json
+            fi
+          done
+
+          echo "]" >> assets/gallery.json
+
+      - name: Commit gallery.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add assets/gallery.json
+          git commit -m "Auto-update gallery.json" || echo "No changes to commit"
+          git push
