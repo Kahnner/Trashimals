@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Trashimals • Photo Gallery</title>
-  <meta name="description" content="Trashimals is a friendly Oklahoma City furry group. Est. Sept 2023. Safe, welcoming, and full of fun events.">
+  <meta name="description" content="Trashimals is a friendly Oklahoma City-based furry meet group. Est. Sept 2023. Safe, welcoming, and full of fun events.">
   <link rel="icon" href="assets/trashimals-logo.png">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 <header class="site-header">
   <div class="container nav" id="nav">
@@ -19,9 +20,11 @@
         <div class="badge">Oklahoma City • Est. Sep 2023</div>
       </div>
     </div>
+
     <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
+
     <nav>
       <ul>
         <li><a href="index" class="">Home</a></li>
@@ -34,40 +37,46 @@
   </div>
   <div class="ribbon"></div>
 </header>
+
 <main>
-<div class="container container-gallery">
+  <div class="container container-gallery">
+    <section class="section">
+      <h2>Moments from our Meetups</h2>
+      <p>
+        We love memories! Here are a few from recent meets, proudly taken by our Photographer Kahnner!
+      </p>
 
-<section class="section">
-  <h2>Moments from our Meetups</h2>
-  <p>We love memories! Here are a few from recent meets, proudly taken by our Photographer Kahnner!</p>
-  <div class="gallery">
-    <img src="assets/trashimals-splash.png" alt="Trashimals group gathering">
-    <img src="assets/MeetPic.jpg" alt="Trashimals gathering 1">
-    <img src="assets/MeetPic2.jpg" alt="Trashimals gathering 2">
-    <img src="assets/meetpic3.jpg" alt="Trashimals gathering 3">
-    <img src="assets/meetpic4.jpg" alt="Trashimals gathering 4">
-    <img src="assets/meetpic5.jpg" alt="Trashimals gathering 5">
-    <img src="assets/meetpic6.jpg" alt="Trashimals gathering 6">
-    <img src="assets/meetpic7.jpg" alt="Trashimals gathering 7">
-    <img src="assets/meetpic8.jpg" alt="Trashimals gathering 8">
-    <img src="assets/meetpic9.jpg" alt="Trashimals gathering 9">
-    <img src="assets/meetpic10.jpg" alt="Trashimals gathering 10">
-    <img src="assets/meetpic11.jpg" alt="Trashimals gathering 11">
-    <img src="assets/meetpic12.jpg" alt="Trashimals gathering 12">
-    <img src="assets/meetpic13.jpg" alt="Trashimals gathering 13">
-    <img src="assets/meetpic14.jpg" alt="Trashimals gathering 14">
-    <img src="assets/meetpic15.jpg" alt="Trashimals gathering 15">
-    <img src="assets/meetpic16.jpg" alt="Trashimals gathering 16">
-    <img src="assets/meetpic17.jpg" alt="Trashimals gathering 17">
-    <img src="assets/meetpic18.jpg" alt="Trashimals gathering 18">
-    <img src="assets/meetpic19.jpg" alt="Trashimals gathering 19">
+      <!-- The gallery will auto-populate from assets/gallery.json -->
+      <div class="gallery" id="galleryGrid" aria-live="polite"></div>
 
+      <noscript>
+        <p style="margin-top:12px;opacity:.8">
+          This gallery needs JavaScript enabled to load images automatically.
+        </p>
+      </noscript>
+
+      <p style="margin-top:12px;opacity:.75">
+        Want your photo featured? Share it with staff with permission from everyone pictured.
+      </p>
+    </section>
   </div>
-  <p style="margin-top:12px;opacity:.75">Want your photo featured? Share it with staff with permission from everyone pictured.</p>
-</section>
-
-</div>
 </main>
+
+<!-- Lightbox / Modal -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close="true"></div>
+
+  <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button class="lightbox-close" type="button" aria-label="Close" data-close="true">✕</button>
+
+    <img class="lightbox-img" id="lightboxImg" alt="Expanded gallery image">
+
+    <div class="lightbox-actions">
+      <a class="lightbox-download" id="lightboxDownload" href="#" download>Download</a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="container">
     <div style="display:flex;align-items:center;gap:10px">
@@ -77,11 +86,149 @@
     <small>Colors celebrate Pride. Be kind, be you.</small>
   </div>
 </footer>
+
 <script>
-document.addEventListener('click', (e)=>{ 
-  const nav = document.getElementById('nav');
-  if(nav.classList.contains('open') && e.target.tagName==='A'){ nav.classList.remove('open'); }
-});
+  // Close mobile nav on link click
+  document.addEventListener('click', (e)=> {
+    const nav = document.getElementById('nav');
+    if (nav.classList.contains('open') && e.target.tagName === 'A') {
+      nav.classList.remove('open');
+    }
+  });
+
+  const galleryGrid = document.getElementById('galleryGrid');
+
+  // SVG icons (no external libraries)
+  const ICON_EXPAND = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M7 3H3v4h2V5h2V3zm12 0h-4v2h2v2h2V3zM5 17H3v4h4v-2H5v-2zm16 0h-2v2h-2v2h4v-4z"></path>
+    </svg>
+  `;
+  const ICON_DOWNLOAD = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 3v10l3-3 1.4 1.4L12 16.8 7.6 11.4 9 10l3 3V3h0zM5 19h14v2H5v-2z"></path>
+    </svg>
+  `;
+
+  function makeTile(src) {
+    const wrap = document.createElement('div');
+    wrap.className = 'gallery-item';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Trashimals meetup photo';
+    img.loading = 'lazy';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'gallery-overlay';
+
+    const btnExpand = document.createElement('button');
+    btnExpand.type = 'button';
+    btnExpand.className = 'gallery-btn gallery-expand';
+    btnExpand.setAttribute('aria-label', 'Open larger view');
+    btnExpand.innerHTML = ICON_EXPAND;
+
+    const btnDownload = document.createElement('a');
+    btnDownload.className = 'gallery-btn gallery-download';
+    btnDownload.setAttribute('aria-label', 'Download image');
+    btnDownload.href = src;
+    btnDownload.download = '';
+
+    btnDownload.innerHTML = ICON_DOWNLOAD;
+
+    // expand logic
+    btnExpand.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLightbox(src);
+    });
+
+    // If user clicks the image itself, also expand
+    img.addEventListener('click', () => openLightbox(src));
+
+    overlay.appendChild(btnExpand);
+    overlay.appendChild(btnDownload);
+
+    wrap.appendChild(img);
+    wrap.appendChild(overlay);
+
+    return wrap;
+  }
+
+  // Lightbox logic
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxDownload = document.getElementById('lightboxDownload');
+
+  function openLightbox(src) {
+    lightboxImg.src = src;
+    lightboxDownload.href = src;
+
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+
+    // prevent background scroll
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+
+    document.body.style.overflow = '';
+  }
+
+  // close on backdrop or X
+  lightbox.addEventListener('click', (e) => {
+    if (e.target && e.target.getAttribute('data-close') === 'true') {
+      closeLightbox();
+    }
+  });
+
+  // close on ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+      closeLightbox();
+    }
+  });
+
+  async function loadGallery() {
+    galleryGrid.innerHTML = '';
+
+    // Little loading message
+    const loading = document.createElement('p');
+    loading.style.opacity = '.8';
+    loading.textContent = 'Loading photos…';
+    galleryGrid.appendChild(loading);
+
+    try {
+      const res = await fetch('assets/gallery.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('gallery.json not found');
+
+      const list = await res.json();
+
+      galleryGrid.innerHTML = '';
+      if (!Array.isArray(list) || list.length === 0) {
+        galleryGrid.innerHTML = '<p style="opacity:.8">No photos yet — check back soon!</p>';
+        return;
+      }
+
+      // Build tiles
+      const frag = document.createDocumentFragment();
+      list.forEach((src) => {
+        if (typeof src === 'string' && src.trim().length) {
+          frag.appendChild(makeTile(src));
+        }
+      });
+      galleryGrid.appendChild(frag);
+
+    } catch (err) {
+      galleryGrid.innerHTML =
+        '<p style="opacity:.85">Gallery not ready yet. If you just uploaded photos, give GitHub Actions a minute to finish.</p>';
+      console.error(err);
+    }
+  }
+
+  loadGallery();
 </script>
 </body>
 </html>
