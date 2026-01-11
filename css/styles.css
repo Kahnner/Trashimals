@@ -489,3 +489,4 @@ p {
 .lightbox.open {
   display: grid !important;
 }
+#nav.open .burger { outline: 4px solid red !important; }
