@@ -316,12 +316,7 @@ p {
   margin-top: 4px;
   font-weight: bold;
 }
-/* =========================================================
-   GALLERY v2 (namespaced so it won't break other pages)
-   Put this at the VERY BOTTOM of css/styles.css
-   ========================================================= */
 
-/* Use ONLY on gallery page to avoid affecting other pages */
 .container-gallery .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
