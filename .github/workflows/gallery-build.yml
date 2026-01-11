@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-gallery:
     runs-on: ubuntu-latest
@@ -35,8 +38,8 @@ jobs:
 
       - name: Commit gallery.json
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add assets/gallery.json
           git commit -m "Auto-update gallery.json" || echo "No changes to commit"
           git push
