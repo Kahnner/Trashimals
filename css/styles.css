@@ -165,12 +165,13 @@ footer small{opacity:.7}
   .burger{display:inline-flex;gap:6px;flex-direction:column;border:0;background:#fff;padding:10px;border-radius:12px;box-shadow:var(--shadow)}
   .burger span{width:22px;height:2px;background:#000;border-radius:2px}
   nav ul{display:none;flex-direction:column;gap:6px;background:#fff;border:1px solid rgba(0,0,0,.06);padding:10px;border-radius:12px;box-shadow:var(--shadow)}
-  #nav.open nav ul{
-    display: block ruby;
-    max-width: 95vw;
-    position: relative;
-    font-size: small;
-    width: 100%;
+#nav.open nav ul{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 95vw;
+  width: 100%;
+  position: relative;
   }
 }
 
