@@ -511,12 +511,83 @@ p {
   .container-gallery .gallery-item img{height:180px;}
 }
 
-/* Force-hide gallery lightbox when not active */
-.lightbox {
+/* ==============================
+   GLOBAL LIGHTBOX FIX (mobile-safe)
+   Keeps JS behavior the same, but ensures the lightbox is actually visible
+   ============================== */
+
+.lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
   display: none !important;
 }
 
-.lightbox.open {
+.lightbox.open{
   display: grid !important;
+  place-items: center;
 }
 
+.lightbox-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.65);
+}
+
+.lightbox-panel{
+  position: relative;
+  width: min(980px, 92vw);
+  max-height: 86vh;
+  background: rgba(20,20,24,.78);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 18px 60px rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightbox-img{
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 14px;
+  background: rgba(0,0,0,.20);
+}
+
+.lightbox-close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+.lightbox-actions{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.lightbox-download{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
