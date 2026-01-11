@@ -479,3 +479,12 @@ p {
 @media (max-width:520px){
   .container-gallery .gallery-item img{height:180px;}
 }
+
+/* Force-hide gallery lightbox when not active */
+.lightbox {
+  display: none !important;
+}
+
+.lightbox.open {
+  display: grid !important;
+}
