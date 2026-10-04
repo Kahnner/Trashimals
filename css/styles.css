@@ -343,105 +343,7 @@ footer small{
   background-clip:padding-box,border-box;
 }
 
-/* Your existing social-button styling */
-.social-btn{
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  width:250px;
-  gap:14px;
-  overflow:hidden;
-  padding:18px 28px;
-  border-radius:14px;
-  color:white;
-  box-shadow:
-    0 6px 0 rgba(0,0,0,.35),
-    0 10px 15px rgba(0,0,0,.25),
-    0 0 15px rgba(255,255,255,.05);
-  font-family:"Trebuchet MS",Arial,sans-serif;
-  font-size:18px;
-  font-weight:bold;
-  text-decoration:none;
-  transition:all .3s ease-in-out;
-}
-
-.social-btn::before{
-  content:"";
-  position:absolute;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  background:radial-gradient(circle,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 70%);
-  transform:rotate(45deg) scale(0);
-  pointer-events:none;
-  transition:transform .5s ease-in-out, opacity .3s ease-in-out;
-}
-
-.social-btn:hover::before{
-  opacity:.6;
-  transform:rotate(45deg) scale(1);
-}
-
-.social-btn:hover{
-  filter:brightness(1.2);
-  box-shadow:
-    0 12px 0 rgba(0,0,0,.3),
-    0 18px 25px rgba(0,0,0,.35),
-    0 0 25px rgba(255,255,255,.15);
-  transform:translateY(-5px) scale(1.05);
-  animation:rainbowGlow 1.5s infinite alternate;
-}
-
-.social-btn svg{
-  flex-shrink:0;
-  width:36px;
-  height:36px;
-  filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));
-  transition:transform .3s ease-in-out;
-}
-
-.social-btn:hover svg{
-  transform:scale(1.2) rotate(10deg);
-}
-
-.socials{
-  position:relative;
-  display:grid;
-  justify-content:center;
-  gap:20px;
-  max-width:340px;
-  margin:0 auto;
-}
-
-@keyframes rainbowGlow{
-  0%{
-    box-shadow:0 6px 0 rgba(255,0,0,.6),0 10px 15px rgba(255,0,0,.4),0 0 15px rgba(255,0,0,.3);
-  }
-
-  20%{
-    box-shadow:0 6px 0 rgba(255,127,0,.6),0 10px 15px rgba(255,127,0,.4),0 0 15px rgba(255,127,0,.3);
-  }
-
-  40%{
-    box-shadow:0 6px 0 rgba(255,255,0,.6),0 10px 15px rgba(255,255,0,.4),0 0 15px rgba(255,255,0,.3);
-  }
-
-  60%{
-    box-shadow:0 6px 0 rgba(0,255,0,.6),0 10px 15px rgba(0,255,0,.4),0 0 15px rgba(0,255,0,.3);
-  }
-
-  80%{
-    box-shadow:0 6px 0 rgba(0,0,255,.6),0 10px 15px rgba(0,0,255,.4),0 0 15px rgba(0,0,255,.3);
-  }
-
-  100%{
-    box-shadow:0 6px 0 rgba(139,0,255,.6),0 10px 15px rgba(139,0,255,.4),0 0 15px rgba(139,0,255,.3);
-  }
-}
-
-/* Gallery */
+/* Gallery overlay */
 .container-gallery .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -666,7 +568,7 @@ body.tm-modal-open{
   transform:scale(1.1) rotate(90deg);
 }
 
-/* Brevo form only inside popup */
+/* Brevo form inside the popup only */
 #tmNewsletterModal .sib-form{
   width:100%;
   margin:0;
@@ -769,6 +671,7 @@ body.tm-modal-open{
   }
 }
 
+/* Mobile navigation */
 .burger{
   display:none;
 }
