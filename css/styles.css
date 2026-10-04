@@ -1,3 +1,4 @@
+```css
 :root{
   --pink:#f6c7da;
   --pink-200:#f9d6e4;
@@ -16,337 +17,481 @@
   --pride-purple:#750787;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:var(--bg);}
+*{
+  box-sizing:border-box;
+}
 
-.container{max-width:1050px;margin-inline:auto;padding:24px}
-a{color:#5a2a6a;text-decoration:none}
-a:hover{text-decoration:underline}
+html,
+body{
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+}
+
+body{
+  background:none;
+  color:#333;
+  padding:2rem 0;
+  margin:0;
+}
+
+.container{
+  width:90%;
+  max-width:720px;
+  margin-inline:auto;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background:none;
+}
+
+.container-merch{
+  width:90%;
+  max-width:90vw;
+  margin-inline:auto;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background:none;
+}
+
+.container-gallery{
+  width:90%;
+  max-width:90vw;
+  margin-inline:auto;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background:none;
+}
+
+.container-staff{
+  width:90%;
+  max-width:90vw;
+  margin-inline:auto;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  background:none;
+}
+
+a{
+  color:#5a2a6a;
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
 
 header.site-header{
-  position:sticky; top:0; z-index:50;
+  position:sticky;
+  top:0;
+  z-index:50;
+  display:grid;
   backdrop-filter:saturate(160%) blur(6px);
-  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.82));
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.88),
+    rgba(255,255,255,.82)
+  );
   border-bottom:1px solid rgba(0,0,0,.06);
-  display: grid;
 }
-
-.nav{display:flex;align-items:center;gap:18px;justify-content:space-between;padding:10px 0}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:48px;height:48px;border-radius:50%;box-shadow:var(--shadow)}
-.brand .title{font-weight:900;letter-spacing:.3px}
-.badge{background:var(--pink);padding:2px 8px;border-radius:999px;font-size:.75rem;border:1px solid rgba(0,0,0,.05)}
 
 .nav{
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:1rem 0;
 }
 
-nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
-nav a{display:inline-block;padding:8px 10px;border-radius:12px;background:transparent;font-weight:600}
-nav a.active, nav a:hover{background:var(--pink-300);text-decoration:none}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
 
-footer{margin-top:60px;border-top:1px dashed rgba(0,0,0,.15);}
-footer .container{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-footer small{opacity:.7}
+.brand img{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  box-shadow:var(--shadow);
+}
+
+.brand .title{
+  font-weight:900;
+  letter-spacing:.3px;
+}
+
+.badge{
+  background:var(--pink);
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:.75rem;
+  border:1px solid rgba(0,0,0,.05);
+}
+
+nav ul{
+  display:flex;
+  gap:12px;
+  list-style:none;
+  margin:0;
+  padding:0;
+  flex-wrap:wrap;
+}
+
+nav a{
+  display:inline-block;
+  padding:8px 10px;
+  border-radius:12px;
+  background:transparent;
+  font-weight:600;
+}
+
+nav a.active,
+nav a:hover{
+  background:var(--pink-300);
+  text-decoration:none;
+}
+
+footer{
+  margin-top:60px;
+  border-top:1px dashed rgba(0,0,0,.15);
+}
+
+footer .container{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+footer small{
+  opacity:.7;
+}
 
 .hero{
-  position:relative;overflow:hidden;border-radius:var(--radius);
+  position:relative;
+  overflow:hidden;
+  min-height:360px;
+  display:grid;
+  place-items:center;
+  border-radius:var(--radius);
   background:linear-gradient(45deg,var(--pink-200),#ffeaf3);
-  min-height:360px; display:grid; place-items:center; box-shadow:var(--shadow);
+  box-shadow:var(--shadow);
 }
+
 .hero::before{
-  content:""; position:absolute; inset:0;
+  content:"";
+  position:absolute;
+  inset:0;
   background:url("../assets/trashimals-splash.png") center/cover no-repeat;
   filter:saturate(120%) contrast(92%) brightness(95%);
   opacity:.35;
 }
-.hero .content{position:relative;text-align:center;padding:48px}
-.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);margin:.2em 0}
-.hero p{max-width:760px;margin:0 auto 18px auto;font-size:1.1rem;line-height:1.6}
-.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px}
-.btn{display:inline-block;padding:12px 18px;border-radius:14px;border:2px solid #0000;background:#fff;font-weight:700;box-shadow:var(--shadow)}
-.btn.primary{background:var(--pink);border-color:rgba(0,0,0,.06)}
-.btn.primary:hover{transform:translateY(-1px);}
+
+.hero .content{
+  position:relative;
+  padding:48px;
+  text-align:center;
+}
+
+.hero h1{
+  margin:.2em 0;
+  font-size:clamp(2rem,4.5vw,3.2rem);
+}
+
+.hero p{
+  max-width:760px;
+  margin:0 auto 18px;
+  font-size:1.1rem;
+  line-height:1.6;
+}
+
+.cta{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border:2px solid transparent;
+  border-radius:14px;
+  background:#fff;
+  font-weight:700;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--pink);
+  border-color:rgba(0,0,0,.06);
+}
+
+.btn.primary:hover{
+  transform:translateY(-1px);
+}
 
 .card{
-  background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  padding:22px;
   border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  background:var(--card);
+  box-shadow:var(--shadow);
 }
-.grid{display:grid;gap:18px}
-.grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 
-.section{padding:28px 0}
-.section h2{margin:0 0 12px 0;font-size:1.6rem}
+.grid{
+  display:grid;
+  gap:18px;
+}
 
-.ribbon{height:10px;border-radius:999px;background:linear-gradient(90deg,
-  rgba(228,3,3,1), rgba(255,140,0,1), rgba(255,237,0,1), rgba(0,128,38,1), rgba(0,77,255,1), rgba(117,7,135,1));box-shadow:var(--shadow);}
+.grid.cols-3{
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
 
-.notice{background:var(--pink-300);border-left:6px solid var(--accent);padding:14px;border-radius:14px}
+.grid.cols-2{
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+}
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.gallery img{width:100%;height:220px;object-fit:cover;border-radius:14px;box-shadow:var(--shadow)}
+.section{
+  padding:28px 0;
+}
 
-/* ---------------------------
-   UPDATED STAFF CARD STYLES
-   (Only visual/card changes below)
-   --------------------------- */
+.section h2{
+  margin:0 0 12px;
+  font-size:1.6rem;
+}
 
-/* Make staff cards look like distinct cards: slightly larger, centered, shadow, hover */
+.ribbon{
+  height:10px;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    rgba(228,3,3,1),
+    rgba(255,140,0,1),
+    rgba(255,237,0,1),
+    rgba(0,128,38,1),
+    rgba(0,77,255,1),
+    rgba(117,7,135,1)
+  );
+  box-shadow:var(--shadow);
+}
+
+.notice{
+  padding:14px;
+  border-left:6px solid var(--accent);
+  border-radius:14px;
+  background:var(--pink-300);
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
+}
+
+.gallery img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+}
+
+/* ==========================================
+   Staff Cards
+   ========================================== */
+
 .staff-card{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 12px;
-  background: var(--card);
-  border-radius: calc(var(--radius) - 4px);
-  padding: 22px 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  border: 1px solid rgba(0,0,0,0.05);
-  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  padding:22px 18px;
+  border:1px solid rgba(0,0,0,.05);
+  border-radius:calc(var(--radius) - 4px);
+  background:var(--card);
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  text-align:center;
+  transition:transform .22s ease, box-shadow .22s ease;
 }
 
-/* Hover lift */
 .staff-card:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
 }
 
-/* Slightly larger avatars */
 .staff-card img{
-  width: 88px;
-  height: 88px;
-  border-radius: 999px;
-  object-fit: cover;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+  width:88px;
+  height:88px;
+  border-radius:999px;
+  object-fit:cover;
+  box-shadow:0 8px 22px rgba(0,0,0,.06);
 }
 
-/* Role and small text */
 .staff-card .role{
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #4b3f52;
-  margin-top: 4px;
+  margin-top:4px;
+  color:#4b3f52;
+  font-size:.95rem;
+  font-weight:600;
 }
+
 .staff-card small{
   display:block;
-  color: #666;
-  font-size: 0.88rem;
-  margin-top: 4px;
+  margin-top:4px;
+  color:#666;
+  font-size:.88rem;
 }
 
-/* Make each card a bit wider within your grid */
 .grid.cols-3 .staff-card{
-  max-width: 340px;
-  margin: 0 auto;
+  max-width:340px;
+  margin:0 auto;
 }
 
-/* ---------------------------
-   End of staff-card updates
-   --------------------------- */
+/* ==========================================
+   Merch
+   ========================================== */
 
-.merch-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.merch-item img{width:100%;height:200px;object-fit:cover;border-radius:14px;border:1px solid rgba(0,0,0,.06);box-shadow:var(--shadow)}
-.price{font-weight:800}
+.merch-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+
+.merch-item img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+}
+
+.price{
+  font-weight:800;
+}
 
 .pride-accent{
-  background:linear-gradient(120deg,#ffffff 0 55%, transparent 55%) , 
-     linear-gradient(90deg, rgba(228,3,3,0.15), rgba(255,140,0,0.15), rgba(255,237,0,0.15), rgba(0,128,38,0.15), rgba(0,77,255,0.15), rgba(117,7,135,0.15));
+  border:4px solid transparent;
+  border-radius:18px;
+  background:
+    linear-gradient(120deg,#ffffff 0 55%,transparent 55%),
+    linear-gradient(
+      90deg,
+      rgba(228,3,3,.15),
+      rgba(255,140,0,.15),
+      rgba(255,237,0,.15),
+      rgba(0,128,38,.15),
+      rgba(0,77,255,.15),
+      rgba(117,7,135,.15)
+    );
   background-clip:padding-box,border-box;
-  border:4px solid transparent; border-radius:18px;
 }
-
-/* mobile nav */
-.burger{display:none}
-@media (max-width:720px){
-  .burger{
-    display:inline-flex;
-    gap:6px;
-    flex-direction:column;
-    border:0;
-    background:#fff;
-    padding:10px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-
-    /* iPhone fix: make sure burger is actually clickable */
-    position: relative;
-    z-index: 9999;
-    pointer-events: auto;
-  }
-
-  .burger span{width:22px;height:2px;background:#000;border-radius:2px}
-
-  nav ul{
-    display:none;
-    flex-direction:column;
-    gap:6px;
-    background:#fff;
-    border:1px solid rgba(0,0,0,.06);
-    padding:10px;
-    border-radius:12px;
-    box-shadow:var(--shadow)
-  }
-
-  /* iPhone fix: prevent ribbon / overlays from stealing taps */
-  .ribbon{ pointer-events:none; }
-
-  #nav.open nav ul{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    max-width:95vw;
-    width:100%;
-    position:relative;
-  }
-}
-
 
 .pagebreak{
-  position: relative;
-  
+  position:relative;
 }
 
-
-body {
-  font-family: Arial, sans-serif;
-  background: none;
-  color: #333;
-  padding: 2rem 0;
-  margin: 0;
+.content{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 
-.container {
-  width: 90%;
-  max-width: 720px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: none;
+.card-header{
+  padding:1rem;
+  border-radius:16px 16px 0 0;
+  background:linear-gradient(90deg,#1e90ff,#ff69b4,#ffa500,#800080);
+  color:white;
+  font-size:1.3rem;
+  font-weight:bold;
+  text-align:center;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
 }
 
-.container-merch {
-  width: 90%;
-  max-width: 90vw;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: none;
+.page{
+  display:none;
+  position:relative;
+  opacity:0;
+  padding:2rem;
+  transition:all .5s ease;
 }
 
-.container-gallery {
-  width: 90%;
-  max-width: 90vw;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: none;
+.page.active{
+  display:block;
+  opacity:1;
 }
 
-.container-staff {
-  width: 90%;
-  max-width: 90vw;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  background: none;
+h2{
+  margin-top:0;
+  margin-bottom:.8rem;
 }
 
-.content {
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  padding: 0;
-  position: relative;
-  overflow: hidden;
+ul,
+ol{
+  padding-left:1.4rem;
+  margin-bottom:1rem;
 }
 
-.card-header {
-  padding: 1rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  border-radius: 16px 16px 0 0;
-  background: linear-gradient(90deg, #1e90ff, #ff69b4, #ffa500, #800080);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+p{
+  margin-bottom:1rem;
+  line-height:1.5;
 }
 
-.page {
-  display: none;
-  position: relative;
-  opacity: 0;
-  transition: all 0.5s ease;
-  padding: 2rem;
+.nav button{
+  padding:.6rem 1.2rem;
+  border:none;
+  border-radius:10px;
+  background:#333;
+  color:white;
+  cursor:pointer;
+  font-size:1rem;
+  transition:all .2s;
 }
 
-.page.active {
-  display: block;
-  opacity: 1;
+.nav button:hover{
+  background:#555;
+  transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
 }
 
-h2 {
-  margin-top: 0;
-  margin-bottom: 0.8rem;
+.progress-container{
+  width:100%;
+  height:14px;
+  margin-top:.5rem;
+  overflow:hidden;
+  border-radius:7px;
+  background:#ddd;
 }
 
-ul, ol {
-  padding-left: 1.4rem;
-  margin-bottom: 1rem;
+.progress-bar{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#1e90ff,#ff69b4,#ffa500,#800080);
+  transition:width .5s ease;
 }
 
-p {
-  margin-bottom: 1rem;
-  line-height: 1.5;
+.progress-text{
+  margin-top:4px;
+  font-size:.9rem;
+  font-weight:bold;
+  text-align:center;
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
-}
-
-.nav button {
-  background: #333;
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.2s;
-}
-
-.nav button:hover {
-  background: #555;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.progress-container {
-  width: 100%;
-  height: 14px;
-  background: #ddd;
-  border-radius: 7px;
-  margin-top: 0.5rem;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #1e90ff, #ff69b4, #ffa500, #800080);
-  width: 0%;
-  transition: width 0.5s ease;
-}
-
-.progress-text {
-  text-align: center;
-  font-size: 0.9rem;
-  margin-top: 4px;
-  font-weight: bold;
-}
+/* ==========================================
+   Gallery Overlay
+   ========================================== */
 
 .container-gallery .gallery{
   display:grid;
@@ -354,69 +499,64 @@ p {
   gap:12px;
 }
 
-/* Override the old ".gallery img" rules safely */
 .container-gallery .gallery-item{
   position:relative;
-  border-radius:14px;
   overflow:hidden;
+  border-radius:14px;
   box-shadow:var(--shadow);
 }
 
 .container-gallery .gallery-item img{
+  display:block;
   width:100%;
   height:220px;
-  object-fit:cover;
-  display:block;
   border-radius:14px;
-  box-shadow:none; /* prevent double shadow */
+  object-fit:cover;
+  box-shadow:none;
   transition:filter .18s ease, transform .18s ease;
 }
 
-/* Hover overlay with buttons */
 .container-gallery .gallery-overlay{
   position:absolute;
   inset:0;
   display:flex;
-  gap:10px;
   align-items:center;
   justify-content:center;
+  gap:10px;
   opacity:0;
-  transition:opacity .18s ease;
   background:rgba(0,0,0,.35);
+  transition:opacity .18s ease;
 }
 
-/* Show overlay on hover / keyboard focus */
 .container-gallery .gallery-item:hover .gallery-overlay,
 .container-gallery .gallery-item:focus-within .gallery-overlay{
   opacity:1;
 }
 
-/* Dim image on hover */
 .container-gallery .gallery-item:hover img,
 .container-gallery .gallery-item:focus-within img{
   filter:grayscale(35%) brightness(.85);
   transform:scale(1.02);
 }
 
-/* Icon buttons */
 .container-gallery .gallery-btn{
-  width:46px;
-  height:46px;
-  border-radius:14px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background:rgba(255,255,255,.16);
+  width:46px;
+  height:46px;
   border:1px solid rgba(255,255,255,.28);
+  border-radius:14px;
+  background:rgba(255,255,255,.16);
   cursor:pointer;
   text-decoration:none;
   transition:transform .15s ease, background .15s ease, border-color .15s ease;
 }
 
 .container-gallery .gallery-btn:hover{
-  transform:translateY(-1px);
-  background:rgba(255,255,255,.20);
   border-color:rgba(255,255,255,.38);
+  background:rgba(255,255,255,.20);
+  transform:translateY(-1px);
 }
 
 .container-gallery .gallery-btn svg{
@@ -425,218 +565,341 @@ p {
   fill:#fff;
 }
 
-/* ---------------------------
-   LIGHTBOX (fullscreen modal)
-   --------------------------- */
+/* ==========================================
+   Global Gallery Lightbox
+   ========================================== */
 
-.container-gallery .lightbox{
+.lightbox{
   position:fixed;
   inset:0;
   z-index:9999;
-  display:none;
+  display:none !important;
 }
 
-.container-gallery .lightbox.open{
-  display:grid;
+.lightbox.open{
+  display:grid !important;
   place-items:center;
 }
 
-.container-gallery .lightbox-backdrop{
+.lightbox-backdrop{
   position:absolute;
   inset:0;
   background:rgba(0,0,0,.65);
 }
 
-.container-gallery .lightbox-panel{
+.lightbox-panel{
   position:relative;
   width:min(980px,92vw);
   max-height:86vh;
-  background:rgba(20,20,24,.78);
+  padding:14px;
   border:1px solid rgba(255,255,255,.14);
   border-radius:18px;
-  padding:14px;
+  background:rgba(20,20,24,.78);
   box-shadow:0 18px 60px rgba(0,0,0,.45);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
 }
 
-.container-gallery .lightbox-img{
+.lightbox-img{
   display:block;
   width:100%;
   max-height:70vh;
-  object-fit:contain;
   border-radius:14px;
   background:rgba(0,0,0,.20);
+  object-fit:contain;
 }
 
-/* Close button (X) */
-.container-gallery .lightbox-close{
+.lightbox-close{
   position:absolute;
   top:10px;
   right:10px;
+  display:grid;
   width:42px;
   height:42px;
-  border-radius:14px;
   border:1px solid rgba(255,255,255,.22);
+  border-radius:14px;
   background:rgba(255,255,255,.14);
   color:#fff;
   cursor:pointer;
   font-size:18px;
   line-height:1;
-  display:grid;
   place-items:center;
 }
 
-.container-gallery .lightbox-actions{
+.lightbox-actions{
   display:flex;
   justify-content:flex-end;
   margin-top:10px;
 }
 
-.container-gallery .lightbox-download{
+.lightbox-download{
   display:inline-flex;
   align-items:center;
   justify-content:center;
   padding:10px 14px;
+  border:1px solid rgba(255,255,255,.22);
   border-radius:14px;
   background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.22);
   color:#fff;
-  text-decoration:none;
   font-weight:600;
+  text-decoration:none;
 }
 
-/* Mobile tweak */
-@media (max-width:520px){
-  .container-gallery .gallery-item img{height:180px;}
+/* ==========================================
+   Trashimals Newsletter Popup
+   Centered + Bounce Animation
+   ========================================== */
+
+body.tm-modal-open{
+  overflow:hidden;
 }
 
-/* ==============================
-   GLOBAL LIGHTBOX FIX (mobile-safe)
-   Keeps JS behavior the same, but ensures the lightbox is actually visible
-   ============================== */
+/*
+  Full-screen popup layer.
 
-.lightbox{
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: none !important;
+  display:flex + align-items:center + justify-content:center
+  keeps the panel exactly centered on the screen.
+*/
+.tm-modal{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:none;
+  width:100vw;
+  height:100vh;
+  min-height:100dvh;
+  padding:20px;
+  align-items:center;
+  justify-content:center;
 }
 
-.lightbox.open{
-  display: grid !important;
-  place-items: center;
+.tm-modal.open{
+  display:flex;
 }
 
-.lightbox-backdrop{
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-}
-
-.lightbox-panel{
-  position: relative;
-  width: min(980px, 92vw);
-  max-height: 86vh;
-  background: rgba(20,20,24,.78);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 18px;
-  padding: 14px;
-  box-shadow: 0 18px 60px rgba(0,0,0,.45);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.lightbox-img{
-  display: block;
-  width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  border-radius: 14px;
-  background: rgba(0,0,0,.20);
-}
-
-.lightbox-close{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.22);
-  background: rgba(255,255,255,.14);
-  color: #fff;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-}
-
-.lightbox-actions{
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
-
-.lightbox-download{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.22);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-
-/* ===== Trashimals Newsletter Popup (Brevo) ===== */
-body.tm-modal-open{ overflow: hidden; }
-
-.tm-modal{ position: fixed; inset: 0; display: none; z-index: 9999; }
-.tm-modal.open{ display: block; }
-
+/* Dark background behind newsletter popup */
 .tm-modal-backdrop{
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,.55);
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:rgba(0,0,0,.58);
+  opacity:0;
+  animation:tmBackdropFadeIn .3s ease forwards;
 }
 
+/*
+  The actual popup box.
+
+  There is intentionally NO:
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+
+  The .tm-modal flex parent handles all centering.
+*/
 .tm-modal-panel{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(680px, 92vw);
-  max-height: 86vh;
-  overflow: auto;
-  background: rgba(255,255,255,.96);
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 18px 60px rgba(0,0,0,.35);
+  position:relative;
+  z-index:1;
+
+  width:min(680px,calc(100vw - 40px));
+  max-height:calc(100dvh - 40px);
+  margin:0 !important;
+  padding:28px;
+  overflow-y:auto;
+
+  border:3px solid #f4b7cd;
+  border-radius:18px;
+  background:rgba(255,248,251,.98);
+  box-shadow:0 18px 60px rgba(0,0,0,.38);
+
+  box-sizing:border-box;
+  text-align:center;
+
+  /* Prevent old popup centering styles from affecting this box */
+  top:auto;
+  left:auto;
+
+  /* Starting point for bounce animation */
+  opacity:0;
+  transform:translateY(70px) scale(.72);
 }
 
+/* Runs whenever the modal receives the .open class */
+.tm-modal.open .tm-modal-panel{
+  animation:tmNewsletterBounceIn .72s cubic-bezier(.22,1.35,.36,1) forwards;
+}
+
+/* Newsletter X button */
 .tm-modal-close{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  border: 1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.7);
-  color: #111;
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  display: grid;
-  place-items: center;
+  position:absolute;
+  top:10px;
+  right:10px;
+
+  display:grid;
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:50%;
+  background:#f4b7cd;
+  color:#45284b;
+  cursor:pointer;
+  font-size:20px;
+  font-weight:800;
+  line-height:1;
+  place-items:center;
+
+  transition:transform .2s ease, background-color .2s ease;
 }
 
-/* Make the Brevo form sit nicely inside the popup */
-#tmNewsletterModal .sib-form{ background: transparent !important; }
-#tmNewsletterModal #sib-form-container{ margin: 0 auto; }
+.tm-modal-close:hover{
+  background:#e59bb9;
+  transform:scale(1.1) rotate(90deg);
+}
+
+/* Brevo form layout inside the popup */
+#tmNewsletterModal .sib-form{
+  width:100%;
+  background:transparent !important;
+}
+
+#tmNewsletterModal .sib-form-container{
+  width:100%;
+}
+
+#tmNewsletterModal #sib-form-container{
+  margin:0 auto !important;
+}
+
+#tmNewsletterModal #sib-container{
+  width:100% !important;
+  max-width:540px !important;
+  margin:0 auto !important;
+}
+
+/* Fade the dark overlay into view */
+@keyframes tmBackdropFadeIn{
+  from{
+    opacity:0;
+  }
+
+  to{
+    opacity:1;
+  }
+}
+
+/* Centered popup bounce animation */
+@keyframes tmNewsletterBounceIn{
+  0%{
+    opacity:0;
+    transform:translateY(70px) scale(.72);
+  }
+
+  52%{
+    opacity:1;
+    transform:translateY(-18px) scale(1.05);
+  }
+
+  72%{
+    transform:translateY(9px) scale(.98);
+  }
+
+  88%{
+    transform:translateY(-4px) scale(1.01);
+  }
+
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* ==========================================
+   Mobile Layout
+   ========================================== */
+
+.burger{
+  display:none;
+}
+
+@media (max-width:720px){
+  .burger{
+    position:relative;
+    z-index:9999;
+    display:inline-flex;
+    flex-direction:column;
+    gap:6px;
+    padding:10px;
+    border:0;
+    border-radius:12px;
+    background:#fff;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    pointer-events:auto;
+  }
+
+  .burger span{
+    width:22px;
+    height:2px;
+    border-radius:2px;
+    background:#000;
+  }
+
+  nav ul{
+    display:none;
+    flex-direction:column;
+    gap:6px;
+    padding:10px;
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:12px;
+    background:#fff;
+    box-shadow:var(--shadow);
+  }
+
+  .ribbon{
+    pointer-events:none;
+  }
+
+  #nav.open nav ul{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    width:100%;
+    max-width:95vw;
+  }
+}
+
+@media (max-width:520px){
+  .container-gallery .gallery-item img{
+    height:180px;
+  }
+
+  .tm-modal{
+    padding:12px;
+  }
+
+  .tm-modal-panel{
+    width:calc(100vw - 24px);
+    max-height:calc(100dvh - 24px);
+    padding:22px 16px;
+    border-radius:16px;
+  }
+}
+
+/* Accessibility: remove animation for visitors who disable motion */
+@media (prefers-reduced-motion:reduce){
+  .tm-modal-backdrop,
+  .tm-modal.open .tm-modal-panel{
+    animation:none;
+  }
+
+  .tm-modal-backdrop{
+    opacity:1;
+  }
+
+  .tm-modal-panel{
+    opacity:1;
+    transform:none;
+  }
+}
+```
