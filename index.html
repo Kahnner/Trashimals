@@ -12,203 +12,6 @@
 
   <!-- Brevo form stylesheet -->
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
-
-  <!-- Newsletter popup force-fix: intentionally after Brevo stylesheet -->
-  <style>
-    body.tm-modal-open {
-      overflow: hidden !important;
-    }
-
-    .tm-modal {
-      position: fixed !important;
-      inset: 0 !important;
-      z-index: 99999 !important;
-      display: none !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      min-height: 100dvh !important;
-      margin: 0 !important;
-      padding: 20px !important;
-      align-items: center !important;
-      justify-content: center !important;
-    }
-
-    .tm-modal.open {
-      display: flex !important;
-    }
-
-    .tm-modal-backdrop {
-      position: absolute !important;
-      inset: 0 !important;
-      z-index: 0 !important;
-      width: auto !important;
-      height: auto !important;
-      background: rgba(0, 0, 0, 0.58) !important;
-      opacity: 0 !important;
-      animation: tmBackdropFadeIn 0.3s ease forwards !important;
-    }
-
-    .tm-modal-panel {
-      position: relative !important;
-      z-index: 1 !important;
-
-      top: auto !important;
-      right: auto !important;
-      bottom: auto !important;
-      left: auto !important;
-
-      width: min(680px, calc(100vw - 40px)) !important;
-      max-width: calc(100vw - 40px) !important;
-      max-height: calc(100dvh - 40px) !important;
-      overflow-y: auto !important;
-
-      margin: 0 !important;
-      box-sizing: border-box !important;
-
-      padding: 28px !important;
-      border: 3px solid #f4b7cd !important;
-      border-radius: 18px !important;
-      background: rgba(255, 248, 251, 0.98) !important;
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.38) !important;
-      text-align: center !important;
-
-      opacity: 0 !important;
-      transform: translateY(70px) scale(0.72) !important;
-      animation: none !important;
-    }
-
-    .tm-modal.open .tm-modal-panel {
-      animation: tmNewsletterBounceIn 0.72s cubic-bezier(0.22, 1.35, 0.36, 1) forwards !important;
-    }
-
-    .tm-modal-close {
-      position: absolute !important;
-      top: 10px !important;
-      right: 10px !important;
-      bottom: auto !important;
-      left: auto !important;
-      z-index: 2 !important;
-
-      display: grid !important;
-      place-items: center !important;
-      width: 38px !important;
-      height: 38px !important;
-      margin: 0 !important;
-      padding: 0 !important;
-
-      border: 0 !important;
-      border-radius: 50% !important;
-      background: #f4b7cd !important;
-      color: #45284b !important;
-      cursor: pointer !important;
-      font-size: 20px !important;
-      font-weight: 800 !important;
-      line-height: 1 !important;
-      transition: transform 0.2s ease, background-color 0.2s ease !important;
-    }
-
-    .tm-modal-close:hover {
-      background: #e59bb9 !important;
-      transform: scale(1.1) rotate(90deg) !important;
-    }
-
-    /* Keep the Brevo form contained inside the centered popup */
-    #tmNewsletterModal .sib-form {
-      display: block !important;
-      position: static !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      background: transparent !important;
-    }
-
-    #tmNewsletterModal .sib-form-container {
-      display: block !important;
-      position: static !important;
-      width: 100% !important;
-      max-width: 100% !important;
-      margin: 0 auto !important;
-      padding: 0 !important;
-    }
-
-    #tmNewsletterModal #sib-form-container {
-      width: 100% !important;
-      max-width: 540px !important;
-      margin: 0 auto !important;
-    }
-
-    #tmNewsletterModal #sib-container {
-      width: 100% !important;
-      max-width: 540px !important;
-      margin: 0 auto !important;
-    }
-
-    @keyframes tmBackdropFadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
-    @keyframes tmNewsletterBounceIn {
-      0% {
-        opacity: 0;
-        transform: translateY(70px) scale(0.72);
-      }
-
-      52% {
-        opacity: 1;
-        transform: translateY(-18px) scale(1.05);
-      }
-
-      72% {
-        transform: translateY(9px) scale(0.98);
-      }
-
-      88% {
-        transform: translateY(-4px) scale(1.01);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @media (max-width: 520px) {
-      .tm-modal {
-        padding: 12px !important;
-      }
-
-      .tm-modal-panel {
-        width: calc(100vw - 24px) !important;
-        max-width: calc(100vw - 24px) !important;
-        max-height: calc(100dvh - 24px) !important;
-        padding: 22px 16px !important;
-        border-radius: 16px !important;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .tm-modal-backdrop,
-      .tm-modal.open .tm-modal-panel {
-        animation: none !important;
-      }
-
-      .tm-modal-backdrop {
-        opacity: 1 !important;
-      }
-
-      .tm-modal-panel {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -216,17 +19,14 @@
     <div class="container nav" id="nav">
       <div class="brand">
         <img src="assets/trashimals-logo.png" alt="Trashimals logo">
+
         <div>
           <div class="title">Trashimals</div>
           <div class="badge">Oklahoma City • Est. Sep 2023</div>
         </div>
       </div>
 
-      <button
-        class="burger"
-        aria-label="Open menu"
-        onclick="document.getElementById('nav').classList.toggle('open')"
-      >
+      <button class="burger" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
         <span></span>
         <span></span>
         <span></span>
@@ -253,10 +53,10 @@
           <h1>Welcome to <span style="white-space:nowrap">Trashimals ♡</span></h1>
 
           <p>
-            We’re a community of furries and friends based in Oklahoma City,
-            Oklahoma. Founded in September 2023, we host meetups, park days,
-            game nights, and creative events—centered on kindness, inclusion,
-            and a <strong>safe space for everyone</strong>.
+            We’re a community of furries and friends based in Oklahoma City, Oklahoma.
+            Founded in September 2023, we host meetups, park days, game nights, and
+            creative events—centered on kindness, inclusion, and a
+            <strong>safe space for everyone</strong>.
           </p>
 
           <div class="cta">
@@ -286,7 +86,9 @@
         </div>
       </section>
 
+      <!-- Socials: restored without changing your layout or button CSS -->
       <div style="display:inline-block; background-color:#ffe4e9; border-radius:20px; padding:30px 20px; text-align:center;">
+
         <div style="font-family:'Trebuchet MS', Arial, sans-serif; text-align:center; margin-bottom:30px;">
           <h2 style="font-size:36px; font-weight:900; color:black; text-shadow:2px 2px 6px rgba(0,0,0,0.15); margin:0;">
             ✨ Our Socials! ✨
@@ -294,42 +96,47 @@
         </div>
 
         <div class="socials">
-          <a href="https://t.me/trashimals" target="_blank" rel="noopener noreferrer" class="social-btn" style="background-color:#0088cc;">
+
+          <!-- Telegram -->
+          <a href="https://t.me/trashimals" target="_blank" class="social-btn" style="background-color:#0088cc;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 240 240">
-              <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm58 85l-19.8 93.7c-1.5 6.6-5.5 8.2-11 5.1l-30.4-22.4-14.7 14.2c-1.6 1.6-3 3-6.1 3l2.2-31.8 57.9-52.2c2.5-2.2-.6-3.5-3.9-1.3l-71.6 45.1-30.8-9.6c-6.7-2.1-6.8-6.7 1.4-9.9l120.6-46.5c5.5-2 10.3 1.3 8.6 9.6z"/>
+              <path d="M120 0C53.7 0 0 53.7 0 120s53.7 120 120 120 120-53.7 120-120S186.3 0 120 0zm58 85l-19.8 93.7c-1.5 6.6-5.5 8.2-11 5.1l-30.4-22.4-14.7 14.2c-1.6 1.6-3 3-6.1 3l2.2-31.8 57.9-52.2c2.5-2.2-0.6-3.5-3.9-1.3l-71.6 45.1-30.8-9.6c-6.7-2.1-6.8-6.7 1.4-9.9l120.6-46.5c5.5-2 10.3 1.3 8.6 9.6z"/>
             </svg>
             Telegram
           </a>
 
-          <a href="https://bsky.app/profile/trashimalsokc.bsky.social" target="_blank" rel="noopener noreferrer" class="social-btn" style="background-color:#6f2dbd;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+          <!-- Bluesky -->
+          <a href="https://bsky.app/profile/trashimalsokc.bsky.social" target="_blank" class="social-btn" style="background-color:#6f2dbd;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
               <g transform="translate(1.4066 1.4066) scale(2.81 2.81)">
-                <path d="M45 90C20.147 90 0 69.853 0 45S20.147 0 45 0s45 20.147 45 45-20.147 45-45 45z" fill="rgb(59,160,254)"/>
-                <path d="M29.977 25.793C36.058 30.358 42.599 39.615 45 44.582c2.402-4.967 8.942-14.224 15.023-18.789 4.388-3.294 11.497-5.843 11.497 2.267 0 1.62-.929 13.607-1.473 15.553-1.893 6.766-8.792 8.491-14.929 7.447 10.727 1.826 13.456 7.873 7.562 13.92-11.192 11.485-16.087-2.882-17.341-6.563-.23-.675-.337-.991-.339-.722-.002-.268-.109.047-.339.722-1.254 3.681-6.148 18.048-17.341 6.563-5.893-6.047-3.165-12.095 7.562-13.92-6.137 1.044-13.036-.681-14.929-7.447-.545-1.946-1.473-13.933-1.473-15.553 0-8.11 7.109-5.561 11.497-2.267z" fill="white"/>
+                <path d="M45 90 L45 90 C20.147 90 0 69.853 0 45 v0 C0 20.147 20.147 0 45 0h0 c24.853 0 45 20.147 45 45v0 C90 69.853 69.853 90 45 90z" fill="rgb(59,160,254)"/>
+                <path d="M29.977 25.793 C36.058 30.358 42.599 39.615 45 44.582 c2.402-4.967 8.942-14.224 15.023-18.789 c4.388-3.294 11.497-5.843 11.497 2.267 c0 1.62-.929 13.607-1.473 15.553 c-1.893 6.766-8.792 8.491-14.929 7.447 c10.727 1.826 13.456 7.873 7.562 13.92 c-11.192 11.485-16.087-2.882-17.341-6.563 c-.23-.675-.337-.991-.339-.722 c-.002-.268-.109.047-.339.722 c-1.254 3.681-6.148 18.048-17.341 6.563 c-5.893-6.047-3.165-12.095 7.562-13.92 c-6.137 1.044-13.036-.681-14.929-7.447 c-.545-1.946-1.473-13.933-1.473-15.553 C18.48 19.95 25.589 22.499 29.977 25.793z" fill="white"/>
               </g>
             </svg>
             Bluesky
           </a>
 
-          <a href="https://x.com/TrashimalsOkc" target="_blank" rel="noopener noreferrer" class="social-btn" style="background-color:#000000;">
+          <!-- X -->
+          <a href="https://x.com/TrashimalsOkc" target="_blank" class="social-btn" style="background-color:#000000;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
               <path d="M18.244 2H21.5l-7.5 8.571L22 22h-6.273l-4.9-6.571L5.8 22H2.5l8-9.143L2 2h6.273l4.455 6.222L18.244 2zM17 20h1.693L7.2 4H5.385L17 20z"/>
             </svg>
-            X
           </a>
 
-          <a href="https://www.instagram.com/trashimalsokc/" target="_blank" rel="noopener noreferrer" class="social-btn" style="background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
-            <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/trashimalsokc/" target="_blank" class="social-btn" style="background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);">
+            <svg fill="#000000" width="36" height="36" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.445 5h-8.891A6.559 6.559 0 0 0 5 11.554v8.891A6.559 6.559 0 0 0 11.554 27h8.891a6.56 6.56 0 0 0 6.554-6.555v-8.891A6.557 6.557 0 0 0 20.445 5zm4.342 15.445a4.343 4.343 0 0 1-4.342 4.342h-8.891a4.341 4.341 0 0 1-4.341-4.342v-8.891a4.34 4.34 0 0 1 4.341-4.341h8.891a4.342 4.342 0 0 1 4.341 4.341l.001 8.891z"/>
               <path d="M16 10.312c-3.138 0-5.688 2.551-5.688 5.688s2.551 5.688 5.688 5.688 5.688-2.551 5.688-5.688-2.55-5.688-5.688-5.688zm0 9.163a3.475 3.475 0 1 1-.001-6.95 3.475 3.475 0 0 1 .001 6.95zM21.7 8.991a1.363 1.363 0 1 1-1.364 1.364c0-.752.51-1.364 1.364-1.364z"/>
             </svg>
             Instagram
           </a>
 
-          <a href="https://www.facebook.com/profile.php?id=61556909815715&mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" class="social-btn" style="background-color:#1877F2;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/profile.php?id=61556909815715&mibextid=ZbWKwL" target="_blank" class="social-btn" style="background-color:#1877F2;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
               <path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"/>
-              <path fill="#fff" d="M26.572 29.036h4.917l.772-4.995h-5.69v-2.73c0-2.075.678-3.915 2.619-3.915h3.119v-4.359c-.548-.074-1.707-.236-3.897-.236-4.573 0-7.254 2.415-7.254 7.917v3.323h-4.701v4.995h4.701v13.729C22.089 42.905 23.032 43 24 43c.875 0 1.729-.08 2.572-.194V29.036z"/>
+              <path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"/>
             </svg>
             Facebook
           </a>
@@ -338,118 +145,78 @@
     </div>
   </main>
 
-  <!-- Newsletter popup: intentionally placed directly under BODY, not inside a container -->
+  <!-- Newsletter popup. Keep it outside ALL .container elements. -->
   <div class="tm-modal" id="tmNewsletterModal" aria-hidden="true">
     <div class="tm-modal-backdrop" data-tm-close="1"></div>
 
     <div class="tm-modal-panel" role="dialog" aria-modal="true" aria-labelledby="tmNewsletterTitle">
       <button class="tm-modal-close" type="button" aria-label="Close newsletter popup" data-tm-close="1">✕</button>
 
-      <h2 id="tmNewsletterTitle" style="margin:0 0 6px;">Join the Trashimals Newsletter</h2>
+      <h2 id="tmNewsletterTitle">Join the Trashimals Newsletter</h2>
+      <p>Get updates about meets, events, announcements, and community news 🦝✨</p>
 
-      <p style="margin:0 0 12px;">
-        Get updates about meets, events, announcements, and community news 🦝✨
-      </p>
-
-      <!-- Brevo Newsletter Form -->
-      <div class="sib-form" style="text-align:center; background-color:#EFF2F7;">
+      <div class="sib-form">
         <div id="sib-form-container" class="sib-form-container">
 
-          <div
-            id="error-message"
-            class="sib-form-message-panel"
-            style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px; max-width:540px;"
-          >
+          <div id="error-message" class="sib-form-message-panel">
             <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
-                <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"/>
-              </svg>
-
               <span class="sib-form-message-panel__inner-text">
                 Your subscription could not be saved. Please try again.
               </span>
             </div>
           </div>
 
-          <div id="success-message" class="sib-form-message-panel" style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#085229; background-color:#e7faf0; border-color:#13ce66; border-radius:3px; max-width:540px;">
+          <div id="success-message" class="sib-form-message-panel">
             <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-              <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
-                <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"/>
-              </svg>
-
               <span class="sib-form-message-panel__inner-text">
                 Your subscription has been successful.
               </span>
             </div>
           </div>
 
-          <div
-            id="sib-container"
-            class="sib-container--large sib-container--vertical"
-            style="max-width:540px; text-align:center; background-color:rgba(255,255,255,1); border-width:1px; border-style:solid; border-color:#C0CCD9; border-radius:3px; direction:ltr;"
-          >
+          <div id="sib-container" class="sib-container--large sib-container--vertical">
             <form
               id="sib-form"
               method="POST"
               action="https://5c9fede4.sibforms.com/serve/MUIFAI7dgcHrUL87648eweM1yEXGQ-x3S2uGzYR3XRcuIToyLTJsnpxU86pE5mmtxDXw7R1-jBqSaxVYKW16cJArQqryhAY0Oo7byss1gGxZ8Y9KXzXVjEwd4xDWTbIuxAKbRo4cDsJVW6LTZXTl0ZB7_kz6Vpeud0hfb-twUUtSaQn1XVxLmELipC1MlTjpvoZsFb5aw1hMviq50w=="
               data-type="subscription"
             >
-              <div style="padding:8px 0;">
-                <div class="sib-input sib-form-block">
-                  <div class="form__entry entry_block">
-                    <div class="form__label-row">
-                      <label
-                        class="entry__label"
-                        style="font-family:Helvetica, sans-serif; font-size:16px; font-weight:700; text-align:left; color:#3c4858;"
-                        for="EMAIL"
-                        data-required="*"
-                      >
-                        Enter your email address to subscribe
-                      </label>
-
-                      <div class="entry__field">
-                        <input
-                          class="input"
-                          type="email"
-                          id="EMAIL"
-                          name="EMAIL"
-                          autocomplete="email"
-                          value=""
-                          placeholder="EMAIL"
-                          data-required="true"
-                          required
-                        >
-                      </div>
-                    </div>
-
-                    <label
-                      class="entry__error entry__error--primary"
-                      style="font-family:Helvetica, sans-serif; font-size:16px; text-align:left; color:#661d1d; background-color:#ffeded; border-color:#ff4949; border-radius:3px;"
-                    ></label>
-
-                    <label
-                      class="entry__specification"
-                      style="font-family:Helvetica, sans-serif; font-size:12px; text-align:left; color:#8390A4;"
-                    >
-                      Provide your email address to subscribe. For example: abc@xyz.com
+              <div class="sib-input sib-form-block">
+                <div class="form__entry entry_block">
+                  <div class="form__label-row">
+                    <label class="entry__label" for="EMAIL" data-required="*">
+                      Enter your email address to subscribe
                     </label>
+
+                    <div class="entry__field">
+                      <input
+                        class="input"
+                        type="email"
+                        id="EMAIL"
+                        name="EMAIL"
+                        autocomplete="email"
+                        placeholder="EMAIL"
+                        data-required="true"
+                        required
+                      >
+                    </div>
                   </div>
+
+                  <label class="entry__error entry__error--primary"></label>
+
+                  <label class="entry__specification">
+                    Provide your email address to subscribe. For example: abc@xyz.com
+                  </label>
                 </div>
               </div>
 
-              <div style="padding:8px 0;">
-                <div class="sib-form-block" style="text-align:left;">
-                  <button
-                    class="sib-form-block__button sib-form-block__button-with-loader"
-                    style="font-family:Helvetica, sans-serif; font-size:16px; font-weight:700; text-align:left; color:#FFFFFF; background-color:#3E4857; border-width:0; border-radius:3px;"
-                    type="submit"
-                  >
-                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
-                      <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/>
-                    </svg>
-                    SUBSCRIBE
-                  </button>
-                </div>
+              <div class="sib-form-block">
+                <button
+                  class="sib-form-block__button sib-form-block__button-with-loader"
+                  type="submit"
+                >
+                  SUBSCRIBE
+                </button>
               </div>
 
               <input type="text" name="email_address_check" value="" class="input--hidden">
@@ -476,15 +243,8 @@
         </small>
       </section>
 
-      <div style="display:flex; align-items:center; gap:10px;">
-        <img
-          src="assets/trashimals-logo.png"
-          alt="Trashimals"
-          width="36"
-          height="36"
-          style="border-radius:50%;"
-        >
-
+      <div style="display:flex;align-items:center;gap:10px">
+        <img src="assets/trashimals-logo.png" alt="Trashimals" width="36" height="36" style="border-radius:50%">
         <small>© 2023–present Trashimals • Oklahoma City, OK • Safe space for everyone.</small>
       </div>
 
@@ -492,7 +252,6 @@
     </div>
   </footer>
 
-  <!-- Brevo settings and script -->
   <script>
     window.REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
     window.LOCALE = "en";
@@ -524,7 +283,7 @@
     document.addEventListener("click", (event) => {
       const nav = document.getElementById("nav");
 
-      if (nav.classList.contains("open") && event.target.tagName === "A") {
+      if (nav && nav.classList.contains("open") && event.target.tagName === "A") {
         nav.classList.remove("open");
       }
     });
@@ -537,20 +296,13 @@
       if (!modal) return;
 
       function openModal() {
-        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("tm-modal-open");
 
-        /*
-          This forces the browser to register the closed state first.
-          Then it re-adds .open on the next frame, so the bounce animation
-          runs on every page load and every click of the footer button.
-        */
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            modal.classList.add("open");
-            modal.setAttribute("aria-hidden", "false");
-            document.body.classList.add("tm-modal-open");
-          });
-        });
+        /* Reset first so the animation plays every time it opens. */
+        modal.classList.remove("open");
+        void modal.offsetWidth;
+        modal.classList.add("open");
       }
 
       function closeModal() {
@@ -559,14 +311,12 @@
         document.body.classList.remove("tm-modal-open");
       }
 
-      window.addEventListener("DOMContentLoaded", () => {
-        openModal();
+      window.addEventListener("load", () => {
+        setTimeout(openModal, 250);
       });
 
       modal.addEventListener("click", (event) => {
-        const clickedCloseElement = event.target.closest("[data-tm-close='1']");
-
-        if (clickedCloseElement) {
+        if (event.target.closest("[data-tm-close='1']")) {
           closeModal();
         }
       });
@@ -578,9 +328,9 @@
       });
 
       document.addEventListener("click", (event) => {
-        const openButton = event.target.closest(".tm-open-newsletter");
+        const button = event.target.closest(".tm-open-newsletter");
 
-        if (openButton) {
+        if (button) {
           event.preventDefault();
           openModal();
         }
