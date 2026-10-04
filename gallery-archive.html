@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Trashimals • Previous Meetup Photos</title>
+
+  <meta
+    name="description"
+    content="Browse photos from previous Trashimals meetups and events."
+  >
+
+  <link rel="icon" href="assets/trashimals-logo.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav" id="nav">
+      <div class="brand">
+        <img src="assets/trashimals-logo.png" alt="Trashimals logo">
+
+        <div>
+          <div class="title">Trashimals</div>
+          <div class="badge">Oklahoma City • Est. Sep 2023</div>
+        </div>
+      </div>
+
+      <button
+        class="burger"
+        aria-label="Open menu"
+        onclick="document.getElementById('nav').classList.toggle('open')"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav>
+        <ul>
+          <li><a href="index">Home</a></li>
+          <li><a href="rules">Rules</a></li>
+          <li><a href="gallery" class="active">Photo Gallery</a></li>
+          <li><a href="staff">Meet Our Staff</a></li>
+          <li><a href="merch">Merch</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="ribbon"></div>
+  </header>
+
+  <main>
+    <div class="container container-gallery">
+      <section class="section">
+        <div class="gallery-page-top">
+          <div>
+            <a class="gallery-back-link" href="gallery">
+              ← Back to Photo Gallery
+            </a>
+
+            <h2>Previous Meetups</h2>
+
+            <p>
+              Browse our photo archive, including memories from previous
+              Trashimals events and Halloween meetups.
+            </p>
+          </div>
+
+          <a class="btn primary" href="submit-photos">
+            Submit Photos 💖
+          </a>
+        </div>
+
+        <div class="gallery" id="galleryGrid" aria-live="polite"></div>
+
+        <noscript>
+          <p style="margin-top:12px;opacity:.8">
+            This gallery needs JavaScript enabled to load images automatically.
+          </p>
+        </noscript>
+
+        <p class="gallery-permission-note">
+          Want your photo featured? Share it with staff with permission from
+          everyone pictured.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close="true"></div>
+
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Image preview">
+      <button class="lightbox-close" type="button" aria-label="Close" data-close="true">✕</button>
+
+      <img class="lightbox-img" id="lightboxImg" alt="Expanded gallery image">
+
+      <div class="lightbox-actions">
+        <a class="lightbox-download" id="lightboxDownload" href="#" download>
+          Download
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:10px">
+        <img
+          src="assets/trashimals-logo.png"
+          alt="Trashimals"
+          width="36"
+          height="36"
+          style="border-radius:50%"
+        >
+        <small>© 2023–present Trashimals • Oklahoma City, OK • Safe space for everyone.</small>
+      </div>
+
+      <small>Colors celebrate Pride. Be kind, be you.</small>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("click", (event) => {
+      const nav = document.getElementById("nav");
+
+      if (nav && nav.classList.contains("open") && event.target.tagName === "A") {
+        nav.classList.remove("open");
+      }
+    });
+  </script>
+
+  <script>
+    const galleryGrid = document.getElementById("galleryGrid");
+
+    const ICON_EXPAND = `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M7 3H3v4h2V5h2V3zm12 0h-4v2h2v2h2V3zM5 17H3v4h4v-2H5v-2zm16 0h-2v2h-2v2h4v-4z"></path>
+      </svg>
+    `;
+
+    const ICON_DOWNLOAD = `
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 3v10l3-3 1.4 1.4L12 16.8 7.6 11.4 9 10l3 3V3h0zM5 19h14v2H5v-2z"></path>
+      </svg>
+    `;
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxDownload = document.getElementById("lightboxDownload");
+
+    function openLightbox(source) {
+      lightboxImg.src = source;
+      lightboxDownload.href = source;
+
+      lightbox.classList.add("open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    function makeTile(source) {
+      const wrap = document.createElement("div");
+      wrap.className = "gallery-item";
+
+      const image = document.createElement("img");
+      image.src = source;
+      image.alt = "Trashimals meetup photo";
+      image.loading = "lazy";
+
+      const overlay = document.createElement("div");
+      overlay.className = "gallery-overlay";
+
+      const expandButton = document.createElement("button");
+      expandButton.type = "button";
+      expandButton.className = "gallery-btn gallery-expand";
+      expandButton.setAttribute("aria-label", "Open larger view");
+      expandButton.innerHTML = ICON_EXPAND;
+
+      const downloadButton = document.createElement("a");
+      downloadButton.className = "gallery-btn gallery-download";
+      downloadButton.setAttribute("aria-label", "Download image");
+      downloadButton.href = source;
+      downloadButton.download = "";
+      downloadButton.innerHTML = ICON_DOWNLOAD;
+
+      expandButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        openLightbox(source);
+      });
+
+      image.addEventListener("click", () => {
+        openLightbox(source);
+      });
+
+      overlay.appendChild(expandButton);
+      overlay.appendChild(downloadButton);
+
+      wrap.appendChild(image);
+      wrap.appendChild(overlay);
+
+      return wrap;
+    }
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target && event.target.getAttribute("data-close") === "true") {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) {
+        closeLightbox();
+      }
+    });
+
+    async function loadGallery() {
+      galleryGrid.innerHTML = `
+        <p class="gallery-loading-message">Loading photos…</p>
+      `;
+
+      try {
+        const response = await fetch("assets/gallery-archive.json", {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error("gallery-archive.json not found");
+        }
+
+        const list = await response.json();
+
+        galleryGrid.innerHTML = "";
+
+        if (!Array.isArray(list) || !list.length) {
+          galleryGrid.innerHTML = `
+            <p class="gallery-loading-message">
+              No archived photos have been added yet.
+            </p>
+          `;
+          return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        list.forEach((source) => {
+          if (typeof source === "string" && source.trim().length) {
+            fragment.appendChild(makeTile(source));
+          }
+        });
+
+        galleryGrid.appendChild(fragment);
+      } catch (error) {
+        galleryGrid.innerHTML = `
+          <p class="gallery-loading-message">
+            Gallery not ready yet. If photos were just moved, give GitHub Actions
+            a minute to finish.
+          </p>
+        `;
+
+        console.error(error);
+      }
+    }
+
+    loadGallery();
+  </script>
+</body>
+</html>
