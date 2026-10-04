@@ -44,13 +44,21 @@ a:hover{
   text-decoration:underline;
 }
 
+/* ==========================================
+   Header + Navigation
+   ========================================== */
+
 header.site-header{
   position:sticky;
   top:0;
   z-index:50;
   display:grid;
   backdrop-filter:saturate(160%) blur(6px);
-  background:linear-gradient(180deg,rgba(255,255,255,.88),rgba(255,255,255,.82));
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.88),
+    rgba(255,255,255,.82)
+  );
   border-bottom:1px solid rgba(0,0,0,.06);
 }
 
@@ -111,6 +119,25 @@ nav a:hover{
   text-decoration:none;
 }
 
+.ribbon{
+  height:10px;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    rgba(228,3,3,1),
+    rgba(255,140,0,1),
+    rgba(255,237,0,1),
+    rgba(0,128,38,1),
+    rgba(0,77,255,1),
+    rgba(117,7,135,1)
+  );
+  box-shadow:var(--shadow);
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+
 footer{
   margin-top:60px;
   border-top:1px dashed rgba(0,0,0,.15);
@@ -127,6 +154,10 @@ footer .container{
 footer small{
   opacity:.7;
 }
+
+/* ==========================================
+   General Layout + Buttons
+   ========================================== */
 
 .hero{
   position:relative;
@@ -224,21 +255,6 @@ footer small{
   font-size:1.6rem;
 }
 
-.ribbon{
-  height:10px;
-  border-radius:999px;
-  background:linear-gradient(
-    90deg,
-    rgba(228,3,3,1),
-    rgba(255,140,0,1),
-    rgba(255,237,0,1),
-    rgba(0,128,38,1),
-    rgba(0,77,255,1),
-    rgba(117,7,135,1)
-  );
-  box-shadow:var(--shadow);
-}
-
 .notice{
   padding:14px;
   border-left:6px solid var(--accent);
@@ -246,21 +262,27 @@ footer small{
   background:var(--pink-300);
 }
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;
+.pride-accent{
+  border:4px solid transparent;
+  border-radius:18px;
+  background:
+    linear-gradient(120deg,#ffffff 0 55%,transparent 55%),
+    linear-gradient(
+      90deg,
+      rgba(228,3,3,.15),
+      rgba(255,140,0,.15),
+      rgba(255,237,0,.15),
+      rgba(0,128,38,.15),
+      rgba(0,77,255,.15),
+      rgba(117,7,135,.15)
+    );
+  background-clip:padding-box,border-box;
 }
 
-.gallery img{
-  width:100%;
-  height:220px;
-  border-radius:14px;
-  object-fit:cover;
-  box-shadow:var(--shadow);
-}
+/* ==========================================
+   Staff Cards
+   ========================================== */
 
-/* Staff cards */
 .staff-card{
   display:flex;
   flex-direction:column;
@@ -307,6 +329,10 @@ footer small{
   margin:0 auto;
 }
 
+/* ==========================================
+   Merch
+   ========================================== */
+
 .merch-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -326,24 +352,25 @@ footer small{
   font-weight:800;
 }
 
-.pride-accent{
-  border:4px solid transparent;
-  border-radius:18px;
-  background:
-    linear-gradient(120deg,#ffffff 0 55%,transparent 55%),
-    linear-gradient(
-      90deg,
-      rgba(228,3,3,.15),
-      rgba(255,140,0,.15),
-      rgba(255,237,0,.15),
-      rgba(0,128,38,.15),
-      rgba(0,77,255,.15),
-      rgba(117,7,135,.15)
-    );
-  background-clip:padding-box,border-box;
+/* ==========================================
+   Existing Gallery Grid + Hover Overlay
+   Used on gallery-archive.html and gallery-2026.html
+   ========================================== */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:12px;
 }
 
-/* Gallery overlay */
+.gallery img{
+  width:100%;
+  height:220px;
+  border-radius:14px;
+  object-fit:cover;
+  box-shadow:var(--shadow);
+}
+
 .container-gallery .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -355,6 +382,7 @@ footer small{
   overflow:hidden;
   border-radius:14px;
   box-shadow:var(--shadow);
+  cursor:pointer;
 }
 
 .container-gallery .gallery-item img{
@@ -401,6 +429,18 @@ footer small{
   background:rgba(255,255,255,.16);
   cursor:pointer;
   text-decoration:none;
+  transition:transform .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.container-gallery .gallery-btn:hover{
+  border-color:rgba(255,255,255,.42);
+  background:rgba(255,255,255,.28);
+  transform:translateY(-2px);
+}
+
+.container-gallery .gallery-btn:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:3px;
 }
 
 .container-gallery .gallery-btn svg{
@@ -409,7 +449,10 @@ footer small{
   fill:#fff;
 }
 
-/* Gallery lightbox */
+/* ==========================================
+   Gallery Lightbox
+   ========================================== */
+
 .lightbox{
   position:fixed;
   inset:0;
@@ -437,6 +480,8 @@ footer small{
   border-radius:18px;
   background:rgba(20,20,24,.78);
   box-shadow:0 18px 60px rgba(0,0,0,.45);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
 }
 
 .lightbox-img{
@@ -480,6 +525,13 @@ footer small{
   background:rgba(255,255,255,.14);
   color:#fff;
   font-weight:600;
+  text-decoration:none;
+}
+
+.lightbox-download:hover{
+  border-color:rgba(255,255,255,.50);
+  background:rgba(255,255,255,.24);
+  color:#fff;
   text-decoration:none;
 }
 
@@ -568,7 +620,7 @@ body.tm-modal-open{
   transform:scale(1.1) rotate(90deg);
 }
 
-/* Brevo form inside the popup only */
+/* Brevo form inside popup only */
 #tmNewsletterModal .sib-form{
   width:100%;
   margin:0;
@@ -671,7 +723,329 @@ body.tm-modal-open{
   }
 }
 
-/* Mobile navigation */
+/* ==========================================
+   New Gallery Landing Page
+   Featured Carousel + Folder Cards
+   ========================================== */
+
+.gallery-home-intro{
+  padding-bottom:14px;
+}
+
+.gallery-home-intro p{
+  max-width:760px;
+}
+
+.gallery-page-actions{
+  justify-content:flex-start;
+}
+
+.gallery-showcase-section,
+.gallery-collections-section{
+  margin:22px 0 34px;
+}
+
+.gallery-section-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:14px;
+}
+
+.gallery-section-heading h2{
+  margin:0 0 5px;
+}
+
+.gallery-section-heading p{
+  margin:0;
+  color:#675d69;
+}
+
+.gallery-carousel-controls{
+  display:flex;
+  flex-shrink:0;
+  gap:8px;
+}
+
+.gallery-carousel-button{
+  display:grid;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:12px;
+  background:#fff;
+  color:#4b3f52;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  font-size:1.3rem;
+  font-weight:800;
+  place-items:center;
+  transition:transform .18s ease, background-color .18s ease;
+}
+
+.gallery-carousel-button:hover{
+  background:var(--pink-300);
+  transform:translateY(-2px);
+}
+
+.gallery-carousel-button:focus-visible{
+  outline:3px solid #8a3d75;
+  outline-offset:3px;
+}
+
+.gallery-carousel{
+  position:relative;
+  min-height:clamp(245px,46vw,470px);
+  overflow:hidden;
+  border:4px solid rgba(246,199,218,.85);
+  border-radius:var(--radius);
+  background:linear-gradient(135deg,#ffeaf3,#f9d6e4);
+  box-shadow:var(--shadow);
+}
+
+.gallery-carousel-slide{
+  position:absolute;
+  inset:0;
+  margin:0;
+  opacity:0;
+  transform:scale(1.04);
+  transition:opacity .75s ease, transform 1.25s ease;
+}
+
+.gallery-carousel-slide.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+.gallery-carousel-slide img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.gallery-carousel-loading,
+.gallery-carousel-empty{
+  position:absolute;
+  inset:0;
+  display:grid;
+  padding:24px;
+  color:#5d4358;
+  font-weight:700;
+  text-align:center;
+  place-items:center;
+}
+
+.gallery-folder-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+
+.gallery-folder-card{
+  position:relative;
+  display:flex;
+  min-height:250px;
+  overflow:hidden;
+  padding:28px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:18px;
+  background:#fff;
+  box-shadow:var(--shadow);
+  color:var(--ink);
+  text-decoration:none;
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+.gallery-folder-card:hover,
+.gallery-folder-card:focus-visible{
+  color:var(--ink);
+  text-decoration:none;
+  transform:translateY(-6px);
+  box-shadow:0 16px 34px rgba(70,34,65,.16);
+}
+
+.gallery-folder-card:focus-visible{
+  outline:4px solid rgba(255,143,177,.55);
+  outline-offset:4px;
+}
+
+.gallery-folder-card::after{
+  content:"";
+  position:absolute;
+  right:-45px;
+  bottom:-65px;
+  width:185px;
+  height:185px;
+  border-radius:50%;
+  background:rgba(255,255,255,.32);
+}
+
+.gallery-folder-tab{
+  position:absolute;
+  top:0;
+  left:24px;
+  width:100px;
+  height:19px;
+  border-radius:0 0 12px 12px;
+  background:rgba(255,255,255,.50);
+}
+
+.gallery-folder-archive{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.58),rgba(255,255,255,.13)),
+    linear-gradient(135deg,#ffd4aa,#ff9f99);
+}
+
+.gallery-folder-current{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.62),rgba(255,255,255,.10)),
+    linear-gradient(135deg,#b8e6d2,#83c8ef);
+}
+
+.gallery-folder-icon{
+  position:absolute;
+  top:23px;
+  right:24px;
+  z-index:1;
+  font-size:3.1rem;
+  filter:drop-shadow(0 5px 4px rgba(0,0,0,.12));
+}
+
+.gallery-folder-content{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  max-width:82%;
+}
+
+.gallery-folder-kicker{
+  margin-bottom:8px;
+  color:rgba(43,34,48,.70);
+  font-size:.8rem;
+  font-weight:900;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.gallery-folder-card h3{
+  margin:0 0 8px;
+  font-size:1.55rem;
+}
+
+.gallery-folder-card p{
+  margin:0;
+  line-height:1.5;
+}
+
+.gallery-folder-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:auto;
+  padding-top:20px;
+  font-weight:900;
+}
+
+.gallery-folder-link span{
+  font-size:1.2rem;
+  transition:transform .2s ease;
+}
+
+.gallery-folder-card:hover .gallery-folder-link span{
+  transform:translateX(5px);
+}
+
+.gallery-help-note{
+  padding:20px 22px;
+  border:1px dashed rgba(0,0,0,.18);
+  border-radius:16px;
+  background:rgba(255,255,255,.55);
+}
+
+.gallery-help-note h3{
+  margin:0 0 7px;
+}
+
+.gallery-help-note p{
+  margin:0;
+}
+
+/* ==========================================
+   Archive + 2026 Collection Pages
+   ========================================== */
+
+.gallery-page-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:22px;
+  margin-bottom:24px;
+}
+
+.gallery-page-top h2{
+  margin:10px 0 8px;
+}
+
+.gallery-page-top p{
+  max-width:720px;
+  margin:0;
+}
+
+.gallery-back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:#5a2a6a;
+  font-weight:800;
+}
+
+.gallery-back-link:hover{
+  color:#8a3d75;
+  text-decoration:none;
+}
+
+.gallery-permission-note{
+  margin-top:18px;
+  opacity:.75;
+}
+
+.gallery-loading-message{
+  grid-column:1 / -1;
+  margin:10px 0;
+  opacity:.8;
+}
+
+.gallery-empty-state{
+  grid-column:1 / -1;
+  max-width:560px;
+  margin:16px auto;
+  padding:38px 26px;
+  border:1px dashed rgba(0,0,0,.18);
+  border-radius:18px;
+  background:rgba(255,255,255,.65);
+  text-align:center;
+}
+
+.gallery-empty-state h3{
+  margin:10px 0 8px;
+}
+
+.gallery-empty-state p{
+  margin:0;
+}
+
+.gallery-empty-icon{
+  font-size:3rem;
+}
+
+/* ==========================================
+   Mobile Navigation
+   ========================================== */
+
 .burger{
   display:none;
 }
@@ -719,6 +1093,20 @@ body.tm-modal-open{
     width:100%;
     max-width:95vw;
   }
+
+  .gallery-folder-grid{
+    grid-template-columns:1fr;
+  }
+
+  .gallery-page-top{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .gallery-page-top .btn{
+    width:100%;
+    text-align:center;
+  }
 }
 
 @media (max-width:520px){
@@ -735,6 +1123,30 @@ body.tm-modal-open{
     max-height:calc(100vh - 24px);
     padding:22px 16px;
   }
+
+  .gallery-section-heading{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .gallery-carousel{
+    min-height:255px;
+  }
+
+  .gallery-folder-card{
+    min-height:235px;
+    padding:24px;
+  }
+
+  .gallery-folder-content{
+    max-width:90%;
+  }
+
+  .gallery-folder-icon{
+    top:17px;
+    right:18px;
+    font-size:2.5rem;
+  }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -750,5 +1162,15 @@ body.tm-modal-open{
   .tm-modal-panel{
     opacity:1;
     transform:none;
+  }
+
+  .gallery-carousel-slide,
+  .gallery-folder-card,
+  .gallery-folder-link span,
+  .gallery-carousel-button,
+  .container-gallery .gallery-item img,
+  .container-gallery .gallery-overlay,
+  .container-gallery .gallery-btn{
+    transition:none;
   }
 }
