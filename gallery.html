@@ -279,16 +279,15 @@
       let autoRotateTimer = null;
 
       function shuffle(items) {
-        const copy = [...items];
+  const copy = [...items];
 
-        for (let index = copy.length - 1; index > 0; index--) {
-          const randomIndex = Math.floor(Math.random() * (index + 1));
-          [copy[index], copy[randomIndex]] = [copy[index], copy[randomIndex]];
-          [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
-        }
+  for (let index = copy.length - 1; index > 0; index--) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
+  }
 
-        return copy;
-      }
+  return copy;
+}
 
       async function getPhotos(jsonPath) {
         try {
