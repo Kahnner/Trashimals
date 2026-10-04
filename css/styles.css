@@ -156,7 +156,7 @@ footer small{
 }
 
 /* ==========================================
-   General Layout + Buttons
+   Main Layout
    ========================================== */
 
 .hero{
@@ -353,8 +353,169 @@ footer small{
 }
 
 /* ==========================================
-   Collection Gallery Grid
-   Used on gallery-archive.html and gallery-2026.html
+   ORIGINAL RULES PAGE STYLES
+   Restores the original pages, headers,
+   buttons, and progress bar behavior.
+   ========================================== */
+
+.pagebreak{
+  position:relative;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:none;
+  color:#333;
+  padding:2rem 0;
+  margin:0;
+}
+
+.container{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  width:90%;
+  max-width:720px;
+  background:none;
+}
+
+.container-merch{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  width:90%;
+  max-width:90vw;
+  background:none;
+}
+
+.container-gallery{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  width:90%;
+  max-width:90vw;
+  background:none;
+}
+
+.container-staff{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  width:90%;
+  max-width:90vw;
+  background:none;
+}
+
+.content{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+
+.card-header{
+  padding:1rem;
+  border-radius:16px 16px 0 0;
+  background:linear-gradient(90deg,#1e90ff,#ff69b4,#ffa500,#800080);
+  color:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.2);
+  font-size:1.3rem;
+  font-weight:bold;
+  text-align:center;
+}
+
+.page{
+  position:relative;
+  display:none;
+  padding:2rem;
+  opacity:0;
+  transition:all .5s ease;
+}
+
+.page.active{
+  display:block;
+  opacity:1;
+}
+
+h2{
+  margin-top:0;
+  margin-bottom:.8rem;
+}
+
+ul,
+ol{
+  margin-bottom:1rem;
+  padding-left:1.4rem;
+}
+
+p{
+  margin-bottom:1rem;
+  line-height:1.5;
+}
+
+/*
+  This is intentionally scoped to the old rules navigation
+  so it does not change your main header navigation.
+*/
+.content + .nav,
+.rules-navigation{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:14px;
+}
+
+.content + .nav button,
+.rules-navigation button{
+  padding:.6rem 1.2rem;
+  border:none;
+  border-radius:10px;
+  background:#333;
+  color:#fff;
+  cursor:pointer;
+  font-size:1rem;
+  transition:all .2s;
+}
+
+.content + .nav button:hover,
+.rules-navigation button:hover:not(:disabled){
+  background:#555;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  transform:translateY(-2px);
+}
+
+.rules-navigation button:disabled{
+  cursor:not-allowed;
+  opacity:.45;
+}
+
+.progress-container{
+  width:100%;
+  height:14px;
+  margin-top:.5rem;
+  overflow:hidden;
+  border-radius:7px;
+  background:#ddd;
+}
+
+.progress-bar{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,#1e90ff,#ff69b4,#ffa500,#800080);
+  transition:width .5s ease;
+}
+
+.progress-text{
+  margin-top:4px;
+  font-size:.9rem;
+  font-weight:bold;
+  text-align:center;
+}
+
+/* ==========================================
+   Existing Gallery Grid + Hover Buttons
+   Archive and 2026 collection pages use this.
    ========================================== */
 
 .gallery{
@@ -433,14 +594,9 @@ footer small{
 }
 
 .container-gallery .gallery-btn:hover{
-  border-color:rgba(255,255,255,.42);
-  background:rgba(255,255,255,.28);
-  transform:translateY(-2px);
-}
-
-.container-gallery .gallery-btn:focus-visible{
-  outline:3px solid #fff;
-  outline-offset:3px;
+  border-color:rgba(255,255,255,.38);
+  background:rgba(255,255,255,.20);
+  transform:translateY(-1px);
 }
 
 .container-gallery .gallery-btn svg{
@@ -450,7 +606,7 @@ footer small{
 }
 
 /* ==========================================
-   Gallery Lightbox
+   GLOBAL GALLERY LIGHTBOX
    ========================================== */
 
 .lightbox{
@@ -506,6 +662,7 @@ footer small{
   color:#fff;
   cursor:pointer;
   font-size:18px;
+  line-height:1;
   place-items:center;
 }
 
@@ -528,15 +685,9 @@ footer small{
   text-decoration:none;
 }
 
-.lightbox-download:hover{
-  border-color:rgba(255,255,255,.50);
-  background:rgba(255,255,255,.24);
-  color:#fff;
-  text-decoration:none;
-}
-
 /* ==========================================
-   Newsletter Popup
+   NEWSLETTER POPUP
+   Centered with bounce animation.
    ========================================== */
 
 body.tm-modal-open{
@@ -620,7 +771,6 @@ body.tm-modal-open{
   transform:scale(1.1) rotate(90deg);
 }
 
-/* Brevo newsletter form inside popup only */
 #tmNewsletterModal .sib-form{
   width:100%;
   margin:0;
@@ -724,7 +874,7 @@ body.tm-modal-open{
 }
 
 /* ==========================================
-   Gallery Archive + 2026 Page Headings
+   ARCHIVE + 2026 GALLERY PAGE HEADINGS
    ========================================== */
 
 .gallery-page-top{
@@ -806,7 +956,7 @@ body.tm-modal-open{
 }
 
 /* ==========================================
-   Gallery Home: Compact Animated Showcase
+   MAIN GALLERY: COMPACT FEATURED CAROUSEL
    ========================================== */
 
 .gallery-home-intro{
@@ -830,6 +980,7 @@ body.tm-modal-open{
 }
 
 .gallery-showcase-section .gallery-section-heading{
+  display:flex;
   align-items:center;
   flex-direction:column;
   margin-bottom:14px;
@@ -882,7 +1033,6 @@ body.tm-modal-open{
   object-fit:cover;
 }
 
-/* Hover controls: full-screen and download */
 .gallery-carousel-overlay{
   position:absolute;
   inset:0;
@@ -925,18 +1075,12 @@ body.tm-modal-open{
   transform:translateY(-3px);
 }
 
-.gallery-carousel-action:focus-visible{
-  outline:3px solid #fff;
-  outline-offset:3px;
-}
-
 .gallery-carousel-action svg{
   width:25px;
   height:25px;
   fill:currentColor;
 }
 
-/* Left / right navigation arrows */
 .gallery-carousel-nav{
   position:absolute;
   top:50%;
@@ -962,11 +1106,6 @@ body.tm-modal-open{
 .gallery-carousel-nav:hover{
   background:rgba(73,39,73,.88);
   transform:translateY(-50%) scale(1.08);
-}
-
-.gallery-carousel-nav:focus-visible{
-  outline:3px solid #fff;
-  outline-offset:3px;
 }
 
 .gallery-carousel-nav.previous{
@@ -1006,7 +1145,7 @@ body.tm-modal-open{
 }
 
 /* ==========================================
-   Gallery Home: File Folder Collection Cards
+   MAIN GALLERY: PHOTO FILE FOLDER CARDS
    ========================================== */
 
 .gallery-collections-section{
@@ -1015,7 +1154,6 @@ body.tm-modal-open{
 }
 
 .gallery-collections-section .gallery-section-heading{
-  justify-content:center;
   text-align:center;
 }
 
@@ -1056,11 +1194,6 @@ body.tm-modal-open{
   box-shadow:none;
   text-decoration:none;
   transform:translateY(-8px);
-}
-
-.gallery-folder-card:focus-visible{
-  outline:4px solid rgba(255,143,177,.65);
-  outline-offset:6px;
 }
 
 .gallery-folder-tab{
@@ -1150,18 +1283,6 @@ body.tm-modal-open{
     linear-gradient(135deg,#c7e9a9,#8fc47e);
 }
 
-.gallery-folder-body::after{
-  content:"";
-  position:absolute;
-  right:18px;
-  bottom:15px;
-  width:90px;
-  height:45px;
-  border-radius:50%;
-  background:rgba(255,255,255,.13);
-  filter:blur(6px);
-}
-
 .gallery-folder-content{
   position:relative;
   z-index:1;
@@ -1244,7 +1365,7 @@ body.tm-modal-open{
 }
 
 /* ==========================================
-   Mobile Navigation + Responsive Gallery
+   MOBILE NAV + RESPONSIVE GALLERY
    ========================================== */
 
 .burger{
@@ -1264,6 +1385,7 @@ body.tm-modal-open{
     background:#fff;
     box-shadow:var(--shadow);
     cursor:pointer;
+    pointer-events:auto;
   }
 
   .burger span{
