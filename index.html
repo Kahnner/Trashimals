@@ -10,219 +10,205 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Brevo form styling: this belongs in the HEAD -->
+  <!-- Brevo form stylesheet -->
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+
+  <!-- Newsletter popup force-fix: intentionally after Brevo stylesheet -->
   <style>
-    @font-face {
-      font-display: block;
-      font-family: Roboto;
-      src:
-        url("https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2") format("woff2"),
-        url("https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff") format("woff");
+    body.tm-modal-open {
+      overflow: hidden !important;
     }
 
-    @font-face {
-      font-display: fallback;
-      font-family: Roboto;
-      font-weight: 600;
-      src:
-        url("https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2") format("woff2"),
-        url("https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff") format("woff");
-    }
-
-    @font-face {
-      font-display: fallback;
-      font-family: Roboto;
-      font-weight: 700;
-      src:
-        url("https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2") format("woff2"),
-        url("https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff") format("woff");
-    }
-
-    :where(.sib-form-message-panel) {
-      display: none;
-    }
-
-    :where(.sib-form-message-panel .sib-notification__icon) {
-      width: 20px;
-      height: 20px;
-    }
-
-    #sib-container input:-ms-input-placeholder {
-      font-family: Helvetica, sans-serif;
-      text-align: left;
-      color: #c0ccda;
-    }
-
-    #sib-container input::placeholder,
-    #sib-container textarea::placeholder {
-      font-family: Helvetica, sans-serif;
-      text-align: left;
-      color: #c0ccda;
-    }
-
-    #sib-container a {
-      text-decoration: underline;
-      color: #2BB2FC;
-    }
-
-    /* Newsletter popup styling */
     .tm-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      position: fixed !important;
+      inset: 0 !important;
+      z-index: 99999 !important;
+      display: none !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      min-height: 100dvh !important;
+      margin: 0 !important;
+      padding: 20px !important;
+      align-items: center !important;
+      justify-content: center !important;
     }
 
     .tm-modal.open {
-      display: flex;
+      display: flex !important;
     }
 
     .tm-modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.62);
+      position: absolute !important;
+      inset: 0 !important;
+      z-index: 0 !important;
+      width: auto !important;
+      height: auto !important;
+      background: rgba(0, 0, 0, 0.58) !important;
+      opacity: 0 !important;
+      animation: tmBackdropFadeIn 0.3s ease forwards !important;
     }
 
     .tm-modal-panel {
-      position: relative;
-      z-index: 1;
-      width: min(100%, 620px);
-      max-height: calc(100vh - 40px);
-      overflow-y: auto;
-      padding: 28px;
-      border: 3px solid #f4b7cd;
-      border-radius: 18px;
-      background: #fff8fb;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
-      text-align: center;
+      position: relative !important;
+      z-index: 1 !important;
+
+      top: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      left: auto !important;
+
+      width: min(680px, calc(100vw - 40px)) !important;
+      max-width: calc(100vw - 40px) !important;
+      max-height: calc(100dvh - 40px) !important;
+      overflow-y: auto !important;
+
+      margin: 0 !important;
+      box-sizing: border-box !important;
+
+      padding: 28px !important;
+      border: 3px solid #f4b7cd !important;
+      border-radius: 18px !important;
+      background: rgba(255, 248, 251, 0.98) !important;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.38) !important;
+      text-align: center !important;
+
+      opacity: 0 !important;
+      transform: translateY(70px) scale(0.72) !important;
+      animation: none !important;
+    }
+
+    .tm-modal.open .tm-modal-panel {
+      animation: tmNewsletterBounceIn 0.72s cubic-bezier(0.22, 1.35, 0.36, 1) forwards !important;
     }
 
     .tm-modal-close {
-      position: absolute;
-      top: 10px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
-      border: 0;
-      border-radius: 50%;
-      background: #f4b7cd;
-      color: #45284b;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
+      position: absolute !important;
+      top: 10px !important;
+      right: 10px !important;
+      bottom: auto !important;
+      left: auto !important;
+      z-index: 2 !important;
+
+      display: grid !important;
+      place-items: center !important;
+      width: 38px !important;
+      height: 38px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+
+      border: 0 !important;
+      border-radius: 50% !important;
+      background: #f4b7cd !important;
+      color: #45284b !important;
+      cursor: pointer !important;
+      font-size: 20px !important;
+      font-weight: 800 !important;
+      line-height: 1 !important;
+      transition: transform 0.2s ease, background-color 0.2s ease !important;
     }
 
     .tm-modal-close:hover {
-      background: #e59bb9;
+      background: #e59bb9 !important;
+      transform: scale(1.1) rotate(90deg) !important;
     }
 
-    body.tm-modal-open {
-      overflow: hidden;
+    /* Keep the Brevo form contained inside the centered popup */
+    #tmNewsletterModal .sib-form {
+      display: block !important;
+      position: static !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
     }
 
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 250px;
-      gap: 14px;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 18px 28px;
-      border-radius: 14px;
-      color: white;
-      font-size: 18px;
-      box-shadow:
-        0 6px 0 rgba(0, 0, 0, 0.35),
-        0 10px 15px rgba(0, 0, 0, 0.25),
-        0 0 15px rgba(255, 255, 255, 0.05);
-      transition: all 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
+    #tmNewsletterModal .sib-form-container {
+      display: block !important;
+      position: static !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
     }
 
-    .social-btn::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-      transform: rotate(45deg) scale(0);
-      transition: transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
-      pointer-events: none;
+    #tmNewsletterModal #sib-form-container {
+      width: 100% !important;
+      max-width: 540px !important;
+      margin: 0 auto !important;
     }
 
-    .social-btn:hover::before {
-      transform: rotate(45deg) scale(1);
-      opacity: 0.6;
+    #tmNewsletterModal #sib-container {
+      width: 100% !important;
+      max-width: 540px !important;
+      margin: 0 auto !important;
     }
 
-    .social-btn:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow:
-        0 12px 0 rgba(0, 0, 0, 0.3),
-        0 18px 25px rgba(0, 0, 0, 0.35),
-        0 0 25px rgba(255, 255, 255, 0.15);
-      filter: brightness(1.2);
-      animation: rainbowGlow 1.5s infinite alternate;
+    @keyframes tmBackdropFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
-    .social-btn svg {
-      flex-shrink: 0;
-      width: 36px;
-      height: 36px;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .social-btn:hover svg {
-      transform: scale(1.2) rotate(10deg);
-    }
-
-    @keyframes rainbowGlow {
+    @keyframes tmNewsletterBounceIn {
       0% {
-        box-shadow: 0 6px 0 rgba(255, 0, 0, 0.6), 0 10px 15px rgba(255, 0, 0, 0.4), 0 0 15px rgba(255, 0, 0, 0.3);
+        opacity: 0;
+        transform: translateY(70px) scale(0.72);
       }
 
-      20% {
-        box-shadow: 0 6px 0 rgba(255, 127, 0, 0.6), 0 10px 15px rgba(255, 127, 0, 0.4), 0 0 15px rgba(255, 127, 0, 0.3);
+      52% {
+        opacity: 1;
+        transform: translateY(-18px) scale(1.05);
       }
 
-      40% {
-        box-shadow: 0 6px 0 rgba(255, 255, 0, 0.6), 0 10px 15px rgba(255, 255, 0, 0.4), 0 0 15px rgba(255, 255, 0, 0.3);
+      72% {
+        transform: translateY(9px) scale(0.98);
       }
 
-      60% {
-        box-shadow: 0 6px 0 rgba(0, 255, 0, 0.6), 0 10px 15px rgba(0, 255, 0, 0.4), 0 0 15px rgba(0, 255, 0, 0.3);
-      }
-
-      80% {
-        box-shadow: 0 6px 0 rgba(0, 0, 255, 0.6), 0 10px 15px rgba(0, 0, 255, 0.4), 0 0 15px rgba(0, 0, 255, 0.3);
+      88% {
+        transform: translateY(-4px) scale(1.01);
       }
 
       100% {
-        box-shadow: 0 6px 0 rgba(139, 0, 255, 0.6), 0 10px 15px rgba(139, 0, 255, 0.4), 0 0 15px rgba(139, 0, 255, 0.3);
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
     }
 
-    .socials {
-      position: relative;
-      display: grid;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      max-width: 340px;
-      margin: 0 auto;
+    @media (max-width: 520px) {
+      .tm-modal {
+        padding: 12px !important;
+      }
+
+      .tm-modal-panel {
+        width: calc(100vw - 24px) !important;
+        max-width: calc(100vw - 24px) !important;
+        max-height: calc(100dvh - 24px) !important;
+        padding: 22px 16px !important;
+        border-radius: 16px !important;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .tm-modal-backdrop,
+      .tm-modal.open .tm-modal-panel {
+        animation: none !important;
+      }
+
+      .tm-modal-backdrop {
+        opacity: 1 !important;
+      }
+
+      .tm-modal-panel {
+        opacity: 1 !important;
+        transform: none !important;
+      }
     }
   </style>
-
-  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 
 <body>
@@ -352,7 +338,7 @@
     </div>
   </main>
 
-  <!-- Newsletter popup: Brevo form appears ONLY here -->
+  <!-- Newsletter popup: intentionally placed directly under BODY, not inside a container -->
   <div class="tm-modal" id="tmNewsletterModal" aria-hidden="true">
     <div class="tm-modal-backdrop" data-tm-close="1"></div>
 
@@ -360,8 +346,12 @@
       <button class="tm-modal-close" type="button" aria-label="Close newsletter popup" data-tm-close="1">✕</button>
 
       <h2 id="tmNewsletterTitle" style="margin:0 0 6px;">Join the Trashimals Newsletter</h2>
-      <p style="margin:0 0 12px;">Get updates about meets, events, announcements, and community news 🦝✨</p>
 
+      <p style="margin:0 0 12px;">
+        Get updates about meets, events, announcements, and community news 🦝✨
+      </p>
+
+      <!-- Brevo Newsletter Form -->
       <div class="sib-form" style="text-align:center; background-color:#EFF2F7;">
         <div id="sib-form-container" class="sib-form-container">
 
@@ -502,7 +492,7 @@
     </div>
   </footer>
 
-  <!-- Brevo requires these settings and script at the end of BODY -->
+  <!-- Brevo settings and script -->
   <script>
     window.REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
     window.LOCALE = "en";
@@ -531,10 +521,10 @@
   <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 
   <script>
-    document.addEventListener("click", (e) => {
+    document.addEventListener("click", (event) => {
       const nav = document.getElementById("nav");
 
-      if (nav.classList.contains("open") && e.target.tagName === "A") {
+      if (nav.classList.contains("open") && event.target.tagName === "A") {
         nav.classList.remove("open");
       }
     });
@@ -547,9 +537,20 @@
       if (!modal) return;
 
       function openModal() {
-        modal.classList.add("open");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("tm-modal-open");
+        modal.classList.remove("open");
+
+        /*
+          This forces the browser to register the closed state first.
+          Then it re-adds .open on the next frame, so the bounce animation
+          runs on every page load and every click of the footer button.
+        */
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            modal.classList.add("open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("tm-modal-open");
+          });
+        });
       }
 
       function closeModal() {
@@ -558,26 +559,29 @@
         document.body.classList.remove("tm-modal-open");
       }
 
-      /* Opens automatically every time the Home page loads. */
-      window.addEventListener("DOMContentLoaded", openModal);
+      window.addEventListener("DOMContentLoaded", () => {
+        openModal();
+      });
 
-      modal.addEventListener("click", (e) => {
-        if (e.target.getAttribute("data-tm-close") === "1") {
+      modal.addEventListener("click", (event) => {
+        const clickedCloseElement = event.target.closest("[data-tm-close='1']");
+
+        if (clickedCloseElement) {
           closeModal();
         }
       });
 
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("open")) {
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("open")) {
           closeModal();
         }
       });
 
-      document.addEventListener("click", (e) => {
-        const button = e.target.closest(".tm-open-newsletter");
+      document.addEventListener("click", (event) => {
+        const openButton = event.target.closest(".tm-open-newsletter");
 
-        if (button) {
-          e.preventDefault();
+        if (openButton) {
+          event.preventDefault();
           openModal();
         }
       });
