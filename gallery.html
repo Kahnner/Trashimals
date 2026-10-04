@@ -75,6 +75,7 @@
         </div>
       </section>
 
+      <!-- Centered animated featured gallery -->
       <section class="gallery-showcase-section" aria-labelledby="showcaseTitle">
         <div class="gallery-section-heading">
           <div>
@@ -88,6 +89,7 @@
             Loading featured photos…
           </div>
 
+          <!-- Previous featured photo -->
           <button
             class="gallery-carousel-nav previous"
             id="carouselPrevious"
@@ -97,6 +99,7 @@
             ‹
           </button>
 
+          <!-- Next featured photo -->
           <button
             class="gallery-carousel-nav next"
             id="carouselNext"
@@ -106,6 +109,7 @@
             ›
           </button>
 
+          <!-- Hover controls -->
           <div class="gallery-carousel-overlay">
             <button
               class="gallery-carousel-action"
@@ -137,6 +141,7 @@
         </div>
       </section>
 
+      <!-- Folder-style photo collection buttons -->
       <section class="gallery-collections-section" aria-labelledby="collectionsTitle">
         <div class="gallery-section-heading">
           <div>
@@ -147,7 +152,7 @@
 
         <div class="gallery-folder-grid">
 
-          <!-- Previous/archived photos -->
+          <!-- Older photos archive folder -->
           <a class="gallery-folder-card gallery-folder-archive" href="gallery-archive">
             <div class="gallery-folder-stack" aria-hidden="true">
               <div class="gallery-folder-photo one">
@@ -183,11 +188,10 @@
             </div>
           </a>
 
-          <!-- Current 2026 photos -->
+          <!-- Current 2026 photos folder -->
           <a class="gallery-folder-card gallery-folder-current" href="gallery-2026">
             <div class="gallery-folder-stack" aria-hidden="true">
-              <!-- These are placeholders until you upload actual 2026 photos.
-                   Replace the image paths later with assets/gallery-2026/your-image.jpg -->
+              <!-- Placeholder preview images until you upload photos to assets/gallery-2026 -->
               <div class="gallery-folder-photo one">
                 <img src="assets/gallery-archive/HalloweenMeet1125.jpg" alt="">
               </div>
@@ -252,6 +256,40 @@
     </div>
   </footer>
 
+  <!-- Shared fullscreen photo preview -->
+  <div class="lightbox" id="featuredLightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" data-close="true"></div>
+
+    <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Featured image preview">
+      <button
+        class="lightbox-close"
+        type="button"
+        aria-label="Close image preview"
+        data-close="true"
+      >
+        ✕
+      </button>
+
+      <img
+        class="lightbox-img"
+        id="featuredLightboxImage"
+        src=""
+        alt="Expanded featured Trashimals photo"
+      >
+
+      <div class="lightbox-actions">
+        <a
+          class="lightbox-download"
+          id="featuredLightboxDownload"
+          href="#"
+          download
+        >
+          Download
+        </a>
+      </div>
+    </div>
+  </div>
+
   <script>
     document.addEventListener("click", (event) => {
       const nav = document.getElementById("nav");
@@ -274,24 +312,34 @@
       const downloadButton = document.getElementById("carouselDownload");
       const caption = document.getElementById("carouselCaption");
 
+      const lightbox = document.getElementById("featuredLightbox");
+      const lightboxImage = document.getElementById("featuredLightboxImage");
+      const lightboxDownload = document.getElementById("featuredLightboxDownload");
+
       let slides = [];
       let currentSlide = 0;
       let autoRotateTimer = null;
 
       function shuffle(items) {
-  const copy = [...items];
+        const copy = [...items];
 
-  for (let index = copy.length - 1; index > 0; index--) {
-    const randomIndex = Math.floor(Math.random() * (index + 1));
-    [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
-  }
+        for (let index = copy.length - 1; index > 0; index--) {
+          const randomIndex = Math.floor(Math.random() * (index + 1));
 
-  return copy;
-}
+          [copy[index], copy[randomIndex]] = [
+            copy[randomIndex],
+            copy[index]
+          ];
+        }
+
+        return copy;
+      }
 
       async function getPhotos(jsonPath) {
         try {
-          const response = await fetch(jsonPath, { cache: "no-store" });
+          const response = await fetch(jsonPath, {
+            cache: "no-store"
+          });
 
           if (!response.ok) {
             return [];
@@ -299,9 +347,13 @@
 
           const list = await response.json();
 
-          return Array.isArray(list)
-            ? list.filter((item) => typeof item === "string" && item.trim().length)
-            : [];
+          if (!Array.isArray(list)) {
+            return [];
+          }
+
+          return list.filter((item) => {
+            return typeof item === "string" && item.trim().length > 0;
+          });
         } catch (error) {
           console.warn("Could not load gallery source:", jsonPath, error);
           return [];
@@ -324,6 +376,10 @@
 
           figure.appendChild(image);
 
+          /*
+            Add photo slides before the arrow button elements.
+            This keeps arrows and hover controls on top of images.
+          */
           carousel.insertBefore(figure, previousButton);
         });
       }
@@ -335,16 +391,21 @@
 
         currentSlide = (index + slides.length) % slides.length;
 
-        const elements = carousel.querySelectorAll(".gallery-carousel-slide");
+        const renderedSlides = carousel.querySelectorAll(
+          ".gallery-carousel-slide"
+        );
 
-        elements.forEach((slide, slideIndex) => {
+        renderedSlides.forEach((slide, slideIndex) => {
           slide.classList.toggle("active", slideIndex === currentSlide);
         });
 
         const source = slides[currentSlide];
 
         downloadButton.href = source;
-        caption.textContent = `Featured memory ${currentSlide + 1} of ${slides.length}`;
+        lightboxDownload.href = source;
+
+        caption.textContent =
+          `Featured memory ${currentSlide + 1} of ${slides.length}`;
       }
 
       function startAutoRotate() {
@@ -363,61 +424,43 @@
         startAutoRotate();
       }
 
-      function openFeaturedLightbox() {
+      function openLightbox() {
         const source = slides[currentSlide];
 
         if (!source) {
           return;
         }
 
-        const oldLightbox = document.getElementById("featuredLightbox");
+        lightboxImage.src = source;
+        lightboxDownload.href = source;
 
-        if (oldLightbox) {
-          oldLightbox.remove();
-        }
-
-        const lightbox = document.createElement("div");
-        lightbox.id = "featuredLightbox";
-        lightbox.className = "lightbox open";
+        lightbox.classList.add("open");
         lightbox.setAttribute("aria-hidden", "false");
 
-        lightbox.innerHTML = `
-          <div class="lightbox-backdrop" data-close="true"></div>
-
-          <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Featured image preview">
-            <button class="lightbox-close" type="button" aria-label="Close" data-close="true">✕</button>
-
-            <img class="lightbox-img" src="${source}" alt="Expanded featured Trashimals photo">
-
-            <div class="lightbox-actions">
-              <a class="lightbox-download" href="${source}" download>Download</a>
-            </div>
-          </div>
-        `;
-
-        document.body.appendChild(lightbox);
         document.body.style.overflow = "hidden";
-
-        function closeFeaturedLightbox() {
-          lightbox.remove();
-          document.body.style.overflow = "";
-          document.removeEventListener("keydown", onKeyDown);
-        }
-
-        function onKeyDown(event) {
-          if (event.key === "Escape") {
-            closeFeaturedLightbox();
-          }
-        }
-
-        lightbox.addEventListener("click", (event) => {
-          if (event.target.getAttribute("data-close") === "true") {
-            closeFeaturedLightbox();
-          }
-        });
-
-        document.addEventListener("keydown", onKeyDown);
       }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+
+        document.body.style.overflow = "";
+      }
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target.getAttribute("data-close") === "true") {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "Escape" &&
+          lightbox.classList.contains("open")
+        ) {
+          closeLightbox();
+        }
+      });
 
       const [archivePhotos, currentPhotos] = await Promise.all([
         getPhotos("assets/gallery-archive.json"),
@@ -426,7 +469,10 @@
 
       const allPhotos = [...archivePhotos, ...currentPhotos];
 
-      /* Pick up to six random images for the centered animated gallery */
+      /*
+        Select up to six random photos each time someone loads
+        the Gallery home page.
+      */
       slides = shuffle(allPhotos).slice(0, 6);
 
       if (loading) {
@@ -435,10 +481,12 @@
 
       if (!slides.length) {
         caption.textContent = "No featured photos yet. Check back soon!";
+
         previousButton.hidden = true;
         nextButton.hidden = true;
         expandButton.hidden = true;
         downloadButton.hidden = true;
+
         return;
       }
 
@@ -457,7 +505,7 @@
       });
 
       expandButton.addEventListener("click", () => {
-        openFeaturedLightbox();
+        openLightbox();
       });
 
       carousel.addEventListener("mouseenter", () => {
