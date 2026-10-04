@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-  <!-- Brevo form stylesheet -->
+  <!-- Brevo newsletter form styles -->
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 
@@ -48,6 +48,7 @@
 
   <main>
     <div class="container">
+
       <section class="hero pride-accent">
         <div class="content">
           <h1>Welcome to <span style="white-space:nowrap">Trashimals ♡</span></h1>
@@ -86,14 +87,111 @@
         </div>
       </section>
 
-      <!-- Socials: restored without changing your layout or button CSS -->
+      <!-- Integrated Socials: restored to your original version -->
       <div style="display:inline-block; background-color:#ffe4e9; border-radius:20px; padding:30px 20px; text-align:center;">
 
-        <div style="font-family:'Trebuchet MS', Arial, sans-serif; text-align:center; margin-bottom:30px;">
+        <div style="font-family: 'Trebuchet MS', Arial, sans-serif; text-align:center; margin-bottom:30px;">
           <h2 style="font-size:36px; font-weight:900; color:black; text-shadow:2px 2px 6px rgba(0,0,0,0.15); margin:0;">
             ✨ Our Socials! ✨
           </h2>
         </div>
+
+        <style>
+          /* Social buttons */
+          .social-btn {
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            width:250px;
+            gap:14px;
+            font-family:'Trebuchet MS', Arial, sans-serif;
+            font-weight:bold;
+            text-decoration:none;
+            padding:18px 28px;
+            border-radius:14px;
+            color:white;
+            font-size:18px;
+            box-shadow:0 6px 0 rgba(0,0,0,0.35), 0 10px 15px rgba(0,0,0,0.25), 0 0 15px rgba(255,255,255,0.05);
+            transition:all 0.3s ease-in-out;
+            position:relative;
+            overflow:hidden;
+          }
+
+          .social-btn::before {
+            content:'';
+            position:absolute;
+            top:-50%;
+            left:-50%;
+            width:200%;
+            height:200%;
+            background:radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            transform:rotate(45deg) scale(0);
+            transition:transform 0.5s ease-in-out, opacity 0.3s ease-in-out;
+            pointer-events:none;
+          }
+
+          .social-btn:hover::before {
+            transform:rotate(45deg) scale(1);
+            opacity:0.6;
+          }
+
+          .social-btn:hover {
+            transform:translateY(-5px) scale(1.05);
+            box-shadow:0 12px 0 rgba(0,0,0,0.3), 0 18px 25px rgba(0,0,0,0.35), 0 0 25px rgba(255,255,255,0.15);
+            filter:brightness(1.2);
+            animation:rainbowGlow 1.5s infinite alternate;
+          }
+
+          /* Logo sizing */
+          .social-btn svg {
+            flex-shrink:0;
+            width:36px;
+            height:36px;
+            filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+            transition:transform 0.3s ease-in-out;
+          }
+
+          .social-btn:hover svg {
+            transform:scale(1.2) rotate(10deg);
+          }
+
+          /* Rainbow neon hover pulse */
+          @keyframes rainbowGlow {
+            0% {
+              box-shadow:0 6px 0 rgba(255,0,0,0.6), 0 10px 15px rgba(255,0,0,0.4), 0 0 15px rgba(255,0,0,0.3);
+            }
+
+            20% {
+              box-shadow:0 6px 0 rgba(255,127,0,0.6), 0 10px 15px rgba(255,127,0,0.4), 0 0 15px rgba(255,127,0,0.3);
+            }
+
+            40% {
+              box-shadow:0 6px 0 rgba(255,255,0,0.6), 0 10px 15px rgba(255,255,0,0.4), 0 0 15px rgba(255,255,0,0.3);
+            }
+
+            60% {
+              box-shadow:0 6px 0 rgba(0,255,0,0.6), 0 10px 15px rgba(0,255,0,0.4), 0 0 15px rgba(0,255,0,0.3);
+            }
+
+            80% {
+              box-shadow:0 6px 0 rgba(0,0,255,0.6), 0 10px 15px rgba(0,0,255,0.4), 0 0 15px rgba(0,0,255,0.3);
+            }
+
+            100% {
+              box-shadow:0 6px 0 rgba(139,0,255,0.6), 0 10px 15px rgba(139,0,255,0.4), 0 0 15px rgba(139,0,255,0.3);
+            }
+          }
+
+          .socials {
+            position:relative;
+            align-items:center;
+            justify-content:center;
+            display:grid;
+            gap:20px;
+            max-width:340px;
+            margin:0 auto;
+          }
+        </style>
 
         <div class="socials">
 
@@ -109,8 +207,8 @@
           <a href="https://bsky.app/profile/trashimalsokc.bsky.social" target="_blank" class="social-btn" style="background-color:#6f2dbd;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="32" height="32">
               <g transform="translate(1.4066 1.4066) scale(2.81 2.81)">
-                <path d="M45 90 L45 90 C20.147 90 0 69.853 0 45 v0 C0 20.147 20.147 0 45 0h0 c24.853 0 45 20.147 45 45v0 C90 69.853 69.853 90 45 90z" fill="rgb(59,160,254)"/>
-                <path d="M29.977 25.793 C36.058 30.358 42.599 39.615 45 44.582 c2.402-4.967 8.942-14.224 15.023-18.789 c4.388-3.294 11.497-5.843 11.497 2.267 c0 1.62-.929 13.607-1.473 15.553 c-1.893 6.766-8.792 8.491-14.929 7.447 c10.727 1.826 13.456 7.873 7.562 13.92 c-11.192 11.485-16.087-2.882-17.341-6.563 c-.23-.675-.337-.991-.339-.722 c-.002-.268-.109.047-.339.722 c-1.254 3.681-6.148 18.048-17.341 6.563 c-5.893-6.047-3.165-12.095 7.562-13.92 c-6.137 1.044-13.036-.681-14.929-7.447 c-.545-1.946-1.473-13.933-1.473-15.553 C18.48 19.95 25.589 22.499 29.977 25.793z" fill="white"/>
+                <path d="M 45 90 L 45 90 C 20.147 90 0 69.853 0 45 v 0 C 0 20.147 20.147 0 45 0 h 0 c 24.853 0 45 20.147 45 45 v 0 C 90 69.853 69.853 90 45 90 z" fill="rgb(59,160,254)"/>
+                <path d="M29.977 25.793 C 36.058 30.358 42.599 39.615 45 44.582 c 2.402 -4.967 8.942 -14.224 15.023 -18.789 c 4.388 -3.294 11.497 -5.843 11.497 2.267 c 0 1.62 -0.929 13.607 -1.473 15.553 c -1.893 6.766 -8.792 8.491 -14.929 7.447 c 10.727 1.826 13.456 7.873 7.562 13.92 c -11.192 11.485 -16.087 -2.882 -17.341 -6.563 c -0.23 -0.675 -0.337 -0.991 -0.339 -0.722 c -0.002 -0.268 -0.109 0.047 -0.339 0.722 c -1.254 3.681 -6.148 18.048 -17.341 6.563 c -5.893 -6.047 -3.165 -12.095 7.562 -13.92 c -6.137 1.044 -13.036 -0.681 -14.929 -7.447 c -0.545 -1.946 -1.473 -13.933 -1.473 -15.553 C 18.48 19.95 25.589 22.499 29.977 25.793 L 29.977 25.793 z" fill="white"/>
               </g>
             </svg>
             Bluesky
@@ -145,7 +243,7 @@
     </div>
   </main>
 
-  <!-- Newsletter popup. Keep it outside ALL .container elements. -->
+  <!-- Newsletter popup -->
   <div class="tm-modal" id="tmNewsletterModal" aria-hidden="true">
     <div class="tm-modal-backdrop" data-tm-close="1"></div>
 
@@ -153,7 +251,10 @@
       <button class="tm-modal-close" type="button" aria-label="Close newsletter popup" data-tm-close="1">✕</button>
 
       <h2 id="tmNewsletterTitle">Join the Trashimals Newsletter</h2>
-      <p>Get updates about meets, events, announcements, and community news 🦝✨</p>
+
+      <p>
+        Get updates about meets, events, announcements, and community news 🦝✨
+      </p>
 
       <div class="sib-form">
         <div id="sib-form-container" class="sib-form-container">
@@ -299,7 +400,6 @@
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("tm-modal-open");
 
-        /* Reset first so the animation plays every time it opens. */
         modal.classList.remove("open");
         void modal.offsetWidth;
         modal.classList.add("open");
