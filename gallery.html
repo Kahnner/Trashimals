@@ -54,6 +54,7 @@
 
   <main>
     <div class="container container-gallery">
+
       <section class="section gallery-home-intro">
         <h2>Trashimals Photo Gallery</h2>
 
@@ -78,33 +79,60 @@
         <div class="gallery-section-heading">
           <div>
             <h2 id="showcaseTitle">Featured Memories</h2>
-            <p>A few moments from the Trashimals community.</p>
-          </div>
-
-          <div class="gallery-carousel-controls">
-            <button
-              class="gallery-carousel-button"
-              id="carouselPrevious"
-              type="button"
-              aria-label="Show previous featured photo"
-            >
-              ←
-            </button>
-
-            <button
-              class="gallery-carousel-button"
-              id="carouselNext"
-              type="button"
-              aria-label="Show next featured photo"
-            >
-              →
-            </button>
+            <p>A rotating look at a few Trashimals moments.</p>
           </div>
         </div>
 
         <div class="gallery-carousel" id="galleryCarousel" aria-live="polite">
           <div class="gallery-carousel-loading" id="carouselLoading">
             Loading featured photos…
+          </div>
+
+          <button
+            class="gallery-carousel-nav previous"
+            id="carouselPrevious"
+            type="button"
+            aria-label="Show previous featured photo"
+          >
+            ‹
+          </button>
+
+          <button
+            class="gallery-carousel-nav next"
+            id="carouselNext"
+            type="button"
+            aria-label="Show next featured photo"
+          >
+            ›
+          </button>
+
+          <div class="gallery-carousel-overlay">
+            <button
+              class="gallery-carousel-action"
+              id="carouselExpand"
+              type="button"
+              aria-label="Open featured photo full screen"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 3H3v4h2V5h2V3zm12 0h-4v2h2v2h2V3zM5 17H3v4h4v-2H5v-2zm16 0h-2v2h-2v2h4v-4z"></path>
+              </svg>
+            </button>
+
+            <a
+              class="gallery-carousel-action"
+              id="carouselDownload"
+              href="#"
+              download
+              aria-label="Download featured photo"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3v10l3-3 1.4 1.4L12 16.8 7.6 11.4 9 10l3 3V3h0zM5 19h14v2H5v-2z"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="gallery-carousel-caption" id="carouselCaption">
+            Featured Trashimals memory
           </div>
         </div>
       </section>
@@ -118,43 +146,78 @@
         </div>
 
         <div class="gallery-folder-grid">
-          <a class="gallery-folder-card gallery-folder-archive" href="gallery-archive">
-            <div class="gallery-folder-tab"></div>
 
-            <div class="gallery-folder-icon" aria-hidden="true">
-              🗂️
+          <!-- Previous/archived photos -->
+          <a class="gallery-folder-card gallery-folder-archive" href="gallery-archive">
+            <div class="gallery-folder-stack" aria-hidden="true">
+              <div class="gallery-folder-photo one">
+                <img src="assets/gallery-archive/HalloweenMeet0625.jpg" alt="">
+              </div>
+
+              <div class="gallery-folder-photo two">
+                <img src="assets/gallery-archive/MeetPic.jpg" alt="">
+              </div>
+
+              <div class="gallery-folder-photo three">
+                <img src="assets/gallery-archive/HalloweenMeet0925.jpg" alt="">
+              </div>
             </div>
 
-            <div class="gallery-folder-content">
-              <span class="gallery-folder-kicker">Photo Archive</span>
-              <h3>Previous Meetups</h3>
-              <p>
-                Browse all of our earlier memories, including the Halloween meet
-                and previous Trashimals events.
-              </p>
-              <span class="gallery-folder-link">
-                Open Archive <span aria-hidden="true">→</span>
-              </span>
+            <div class="gallery-folder-tab"></div>
+
+            <div class="gallery-folder-body">
+              <div class="gallery-folder-content">
+                <span class="gallery-folder-kicker">Photo Archive</span>
+
+                <h3>Previous Meetups</h3>
+
+                <p>
+                  Browse our earlier memories, including Halloween meetups and
+                  other past Trashimals events.
+                </p>
+
+                <span class="gallery-folder-link">
+                  Open Archive <span aria-hidden="true">→</span>
+                </span>
+              </div>
             </div>
           </a>
 
+          <!-- Current 2026 photos -->
           <a class="gallery-folder-card gallery-folder-current" href="gallery-2026">
-            <div class="gallery-folder-tab"></div>
+            <div class="gallery-folder-stack" aria-hidden="true">
+              <!-- These are placeholders until you upload actual 2026 photos.
+                   Replace the image paths later with assets/gallery-2026/your-image.jpg -->
+              <div class="gallery-folder-photo one">
+                <img src="assets/gallery-archive/HalloweenMeet1125.jpg" alt="">
+              </div>
 
-            <div class="gallery-folder-icon" aria-hidden="true">
-              📁
+              <div class="gallery-folder-photo two">
+                <img src="assets/gallery-archive/MeetPic2.jpg" alt="">
+              </div>
+
+              <div class="gallery-folder-photo three">
+                <img src="assets/gallery-archive/HalloweenMeet1725.jpg" alt="">
+              </div>
             </div>
 
-            <div class="gallery-folder-content">
-              <span class="gallery-folder-kicker">Current Collection</span>
-              <h3>2026 Photos</h3>
-              <p>
-                New meetups, events, and community memories added throughout
-                2026.
-              </p>
-              <span class="gallery-folder-link">
-                Open 2026 Photos <span aria-hidden="true">→</span>
-              </span>
+            <div class="gallery-folder-tab"></div>
+
+            <div class="gallery-folder-body">
+              <div class="gallery-folder-content">
+                <span class="gallery-folder-kicker">Current Collection</span>
+
+                <h3>2026 Photos</h3>
+
+                <p>
+                  New meetups, events, park days, game nights, and community
+                  memories added throughout 2026.
+                </p>
+
+                <span class="gallery-folder-link">
+                  Open 2026 Photos <span aria-hidden="true">→</span>
+                </span>
+              </div>
             </div>
           </a>
         </div>
@@ -162,6 +225,7 @@
 
       <section class="gallery-help-note">
         <h3>Want your photo featured?</h3>
+
         <p>
           Use the Submit Photos button to share your pictures with staff.
           Please make sure everyone pictured has given permission.
@@ -180,6 +244,7 @@
           height="36"
           style="border-radius:50%"
         >
+
         <small>© 2023–present Trashimals • Oklahoma City, OK • Safe space for everyone.</small>
       </div>
 
@@ -201,8 +266,13 @@
     (async function () {
       const carousel = document.getElementById("galleryCarousel");
       const loading = document.getElementById("carouselLoading");
+
       const previousButton = document.getElementById("carouselPrevious");
       const nextButton = document.getElementById("carouselNext");
+
+      const expandButton = document.getElementById("carouselExpand");
+      const downloadButton = document.getElementById("carouselDownload");
+      const caption = document.getElementById("carouselCaption");
 
       let slides = [];
       let currentSlide = 0;
@@ -213,66 +283,11 @@
 
         for (let index = copy.length - 1; index > 0; index--) {
           const randomIndex = Math.floor(Math.random() * (index + 1));
+          [copy[index], copy[randomIndex]] = [copy[index], copy[randomIndex]];
           [copy[index], copy[randomIndex]] = [copy[randomIndex], copy[index]];
         }
 
         return copy;
-      }
-
-      function renderCarousel() {
-        carousel.innerHTML = "";
-
-        if (!slides.length) {
-          carousel.innerHTML = `
-            <div class="gallery-carousel-empty">
-              No featured photos yet. Check back after our next event!
-            </div>
-          `;
-          return;
-        }
-
-        slides.forEach((source, index) => {
-          const figure = document.createElement("figure");
-          figure.className = "gallery-carousel-slide";
-
-          if (index === currentSlide) {
-            figure.classList.add("active");
-          }
-
-          const image = document.createElement("img");
-          image.src = source;
-          image.alt = "Featured Trashimals meetup memory";
-          image.loading = index === 0 ? "eager" : "lazy";
-
-          figure.appendChild(image);
-          carousel.appendChild(figure);
-        });
-      }
-
-      function showSlide(index) {
-        if (!slides.length) return;
-
-        currentSlide = (index + slides.length) % slides.length;
-
-        const elements = carousel.querySelectorAll(".gallery-carousel-slide");
-
-        elements.forEach((slide, slideIndex) => {
-          slide.classList.toggle("active", slideIndex === currentSlide);
-        });
-      }
-
-      function startAutoRotate() {
-        window.clearInterval(autoRotateTimer);
-
-        if (slides.length < 2) return;
-
-        autoRotateTimer = window.setInterval(() => {
-          showSlide(currentSlide + 1);
-        }, 5000);
-      }
-
-      function restartAutoRotate() {
-        startAutoRotate();
       }
 
       async function getPhotos(jsonPath) {
@@ -294,6 +309,117 @@
         }
       }
 
+      function renderSlides() {
+        slides.forEach((source, index) => {
+          const figure = document.createElement("figure");
+          figure.className = "gallery-carousel-slide";
+
+          if (index === currentSlide) {
+            figure.classList.add("active");
+          }
+
+          const image = document.createElement("img");
+          image.src = source;
+          image.alt = "Featured Trashimals meetup memory";
+          image.loading = index === 0 ? "eager" : "lazy";
+
+          figure.appendChild(image);
+
+          carousel.insertBefore(figure, previousButton);
+        });
+      }
+
+      function showSlide(index) {
+        if (!slides.length) {
+          return;
+        }
+
+        currentSlide = (index + slides.length) % slides.length;
+
+        const elements = carousel.querySelectorAll(".gallery-carousel-slide");
+
+        elements.forEach((slide, slideIndex) => {
+          slide.classList.toggle("active", slideIndex === currentSlide);
+        });
+
+        const source = slides[currentSlide];
+
+        downloadButton.href = source;
+        caption.textContent = `Featured memory ${currentSlide + 1} of ${slides.length}`;
+      }
+
+      function startAutoRotate() {
+        window.clearInterval(autoRotateTimer);
+
+        if (slides.length < 2) {
+          return;
+        }
+
+        autoRotateTimer = window.setInterval(() => {
+          showSlide(currentSlide + 1);
+        }, 5000);
+      }
+
+      function restartAutoRotate() {
+        startAutoRotate();
+      }
+
+      function openFeaturedLightbox() {
+        const source = slides[currentSlide];
+
+        if (!source) {
+          return;
+        }
+
+        const oldLightbox = document.getElementById("featuredLightbox");
+
+        if (oldLightbox) {
+          oldLightbox.remove();
+        }
+
+        const lightbox = document.createElement("div");
+        lightbox.id = "featuredLightbox";
+        lightbox.className = "lightbox open";
+        lightbox.setAttribute("aria-hidden", "false");
+
+        lightbox.innerHTML = `
+          <div class="lightbox-backdrop" data-close="true"></div>
+
+          <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Featured image preview">
+            <button class="lightbox-close" type="button" aria-label="Close" data-close="true">✕</button>
+
+            <img class="lightbox-img" src="${source}" alt="Expanded featured Trashimals photo">
+
+            <div class="lightbox-actions">
+              <a class="lightbox-download" href="${source}" download>Download</a>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(lightbox);
+        document.body.style.overflow = "hidden";
+
+        function closeFeaturedLightbox() {
+          lightbox.remove();
+          document.body.style.overflow = "";
+          document.removeEventListener("keydown", onKeyDown);
+        }
+
+        function onKeyDown(event) {
+          if (event.key === "Escape") {
+            closeFeaturedLightbox();
+          }
+        }
+
+        lightbox.addEventListener("click", (event) => {
+          if (event.target.getAttribute("data-close") === "true") {
+            closeFeaturedLightbox();
+          }
+        });
+
+        document.addEventListener("keydown", onKeyDown);
+      }
+
       const [archivePhotos, currentPhotos] = await Promise.all([
         getPhotos("assets/gallery-archive.json"),
         getPhotos("assets/gallery-2026.json")
@@ -301,17 +427,24 @@
 
       const allPhotos = [...archivePhotos, ...currentPhotos];
 
-      /*
-        Picks up to 6 random photos. The carousel rotates through one
-        large image at a time, so it stays clean on mobile and desktop.
-      */
+      /* Pick up to six random images for the centered animated gallery */
       slides = shuffle(allPhotos).slice(0, 6);
 
       if (loading) {
         loading.remove();
       }
 
-      renderCarousel();
+      if (!slides.length) {
+        caption.textContent = "No featured photos yet. Check back soon!";
+        previousButton.hidden = true;
+        nextButton.hidden = true;
+        expandButton.hidden = true;
+        downloadButton.hidden = true;
+        return;
+      }
+
+      renderSlides();
+      showSlide(0);
       startAutoRotate();
 
       previousButton.addEventListener("click", () => {
@@ -322,6 +455,10 @@
       nextButton.addEventListener("click", () => {
         showSlide(currentSlide + 1);
         restartAutoRotate();
+      });
+
+      expandButton.addEventListener("click", () => {
+        openFeaturedLightbox();
       });
 
       carousel.addEventListener("mouseenter", () => {
